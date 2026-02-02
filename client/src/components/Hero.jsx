@@ -49,7 +49,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-8"
           >
-            AFRICA'S <br />
+            A NEW <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#409891] via-[#48ADB7] to-white">
               DIGITAL GENESIS.
             </span>
@@ -61,7 +61,7 @@ const Hero = () => {
             transition={{ delay: 0.4 }}
             className="text-xl text-gray-400 max-w-lg leading-relaxed mb-12"
           >
-            We aren't just teaching code; we're architecting the next decade of African innovation through immersion and mastery.
+            We aren't just teaching code; we're architecting the next decade of borderless innovation through immersion and mastery.
           </motion.p>
 
           {/* Icon-Based Feature List (Replacing Buttons) */}
