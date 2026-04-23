@@ -349,7 +349,7 @@ useEffect(() => {
                   Go to LearnHub Dashboard
                 </button>
               ) : (
-                <button
+                <button role ="button"
                   onClick={handleBuy}
                   disabled={loading}
                   className={`w-full font-bold py-5 px-8 rounded-2xl text-lg shadow-lg transition-all duration-300 text-white ${
