@@ -79,7 +79,8 @@ const Register = () => {
         navigate("/login");
       }, 2000);
     } catch (err) {
-      console.error("Registration error:", err);
+      console.error("Registration or login error:", err);
+      ;
       
       if (err.response?.status === 409 || err.response?.data?.message?.includes("exists")) {
         setError("This email is already registered. Please login instead.");
