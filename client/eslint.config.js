@@ -23,7 +23,17 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'no-unused-vars': ['error', { varsIgnorePattern: '^([A-Z_]|motion$)', argsIgnorePattern: '^[A-Z_]' }],
     },
+  },
+  // Node-based config files
+  {
+    files: ['*.config.js'],
+    languageOptions: { globals: globals.node },
+  },
+  // Tests
+  {
+    files: ['src/tests/**/*.js', 'src/**/*.test.{js,jsx}'],
+    languageOptions: { globals: { ...globals.node, ...globals.vitest } },
   },
 ])

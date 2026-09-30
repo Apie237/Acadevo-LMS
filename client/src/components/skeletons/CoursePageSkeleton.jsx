@@ -2,12 +2,12 @@ import React from "react";
 
 const CoursesPageSkeleton = () => {
   return (
-    <div className="min-h-screen bg-[#E6E5E1]">
+    <div className="min-h-screen bg-slate-50">
       {/* Header Section Skeleton */}
-      <div className="bg-gradient-to-r from-[#409891] to-[#48ADB7] text-white py-16">
+      <div className="bg-navy text-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="h-12 bg-white/20 rounded w-80 mb-4 animate-pulse"></div>
-          <div className="h-6 bg-white/20 rounded w-96 animate-pulse"></div>
+          <div className="h-12 bg-white/20 rounded w-80 max-w-full mb-4 animate-pulse"></div>
+          <div className="h-6 bg-white/20 rounded w-96 max-w-full animate-pulse"></div>
         </div>
       </div>
 
@@ -25,7 +25,7 @@ const CoursesPageSkeleton = () => {
                 <div className="h-12 bg-gray-200 rounded-xl animate-pulse"></div>
 
                 {/* Filter Header Skeleton */}
-                <div className="flex items-center justify-between pt-4 border-t-2 border-[#BAD0CC]">
+                <div className="flex items-center justify-between pt-4 border-t-2 border-line">
                   <div className="h-6 bg-gray-200 rounded w-24 animate-pulse"></div>
                   <div className="h-4 bg-gray-200 rounded w-20 animate-pulse"></div>
                 </div>
@@ -50,7 +50,7 @@ const CoursesPageSkeleton = () => {
           <div className="flex-1">
             {/* Search Bar Skeleton */}
             <div className="mb-8">
-              <div className="h-14 bg-white rounded-xl border-2 border-[#BAD0CC] shadow-sm animate-pulse"></div>
+              <div className="h-14 bg-white rounded-xl border-2 border-line shadow-sm animate-pulse"></div>
             </div>
 
             {/* Results Count Skeleton */}
@@ -61,7 +61,7 @@ const CoursesPageSkeleton = () => {
             {/* Course Grid Skeleton */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
               {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-[#BAD0CC]/30">
+                <div key={i} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-line/30">
                   {/* Image Skeleton */}
                   <div className="h-48 bg-gray-200 animate-pulse"></div>
 
@@ -94,7 +94,7 @@ const CoursesPageSkeleton = () => {
                     </div>
 
                     {/* Price and Button Skeleton */}
-                    <div className="flex items-center justify-between pt-6 border-t border-[#BAD0CC]">
+                    <div className="flex items-center justify-between pt-6 border-t border-line">
                       <div>
                         <div className="h-3 bg-gray-200 rounded w-16 mb-2 animate-pulse"></div>
                         <div className="h-7 bg-gray-200 rounded w-24 animate-pulse"></div>
