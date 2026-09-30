@@ -11,12 +11,17 @@ afterEach(() => {
 
 
 
-// Mock IntersectionObserver
-global.IntersectionObserver = vi.fn().mockImplementation(() => ({
-  observe: vi.fn(),
-  unobserve: vi.fn(),
-  disconnect: vi.fn(),
-  root: null,
-  rootMargin: '',
-  thresholds: [],
-}));
+// Mock IntersectionObserver (used by framer-motion's whileInView). Must be constructible.
+class MockIntersectionObserver {
+  constructor() {
+    this.root = null;
+    this.rootMargin = "";
+    this.thresholds = [];
+  }
+  observe = vi.fn();
+  unobserve = vi.fn();
+  disconnect = vi.fn();
+  takeRecords = vi.fn(() => []);
+}
+globalThis.IntersectionObserver = MockIntersectionObserver;
+window.scrollTo = vi.fn();

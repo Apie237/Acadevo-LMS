@@ -1,117 +1,107 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { 
-  Twitter, 
-  Instagram, 
-  Linkedin, 
-  Github, 
-  ArrowRight,
-  Heart,
-  ExternalLink
-} from "lucide-react";
-import { assets } from "../assets/assets";
+import { Mail, MessageCircle, MapPin } from "lucide-react";
+import Logo from "./Logo";
+import SocialLinks from "./SocialLinks";
+import { site, whatsappLink } from "../data/site";
+
+const columns = [
+  {
+    title: "Company",
+    links: [
+      { label: "About", to: "/about" },
+      { label: "Works", to: "/works" },
+      { label: "Services", to: "/services" },
+      { label: "Team", to: "/team" },
+    ],
+  },
+  {
+    title: "Academy",
+    links: [
+      { label: "Academy", to: "/academy" },
+      { label: "Programs", to: "/academy/programs" },
+      { label: "Reports", to: "/reports" },
+      { label: "Join the Academy", to: site.joinAcademyPath },
+    ],
+  },
+];
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const footerLinks = {
-    Platform: ["Courses", "Mentorship", "Pricing", "Hiring"],
-    Company: ["About Us", "Careers", "Blog", "Privacy"],
-    Support: ["Help Center", "Community", "Contact", "FAQ"],
-  };
+  const { email, whatsappDisplay, location } = site.contact;
+  const wa = whatsappLink();
 
   return (
-    // Changed bg-gradient to bg-gray-300 and text to slate-900
-    <footer className="relative bg-gray-50 text-slate-900 pt-24 pb-12 overflow-hidden border-t border-gray-400/30">
-      
-      {/* Background Decorative Elements - Adjusted opacity for a light background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#409891]/10 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-[#48ADB7]/10 rounded-full blur-[100px]"></div>
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-6">
-        
-        {/* TOP CTA BOX - Now using a dark glass effect to contrast against gray-300 */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center bg-slate-900/5 backdrop-blur-md border border-slate-900/10 p-8 md:p-12 rounded-[2.5rem] mb-20">
+    <footer className="bg-navy-900 text-slate-300">
+      <div className="container-page py-16 md:py-20">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
-            <h3 className="text-3xl font-extrabold mb-3 text-slate-900">Master your craft.</h3>
-            <p className="text-slate-600 text-lg">Join the 10,000+ African developers building the future.</p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <input 
-              type="email" 
-              placeholder="Enter your work email"
-              // Input now has a light background with dark text
-              className="flex-1 bg-white/50 border border-slate-300 rounded-xl px-6 py-4 focus:outline-none focus:border-[#48ADB7] transition-all text-slate-900 placeholder:text-slate-500"
-            />
-            <button className="bg-gradient-to-r from-[#409891] to-[#48ADB7] text-white px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:scale-105 transition-all shadow-lg shadow-[#409891]/30">
-              Subscribe <ArrowRight size={18} />
-            </button>
-          </div>
-        </div>
-
-        {/* MAIN FOOTER CONTENT */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-12 mb-20">
-          
-          {/* Logo & Description */}
-          <div className="col-span-2">
-            <Link to="/" className="inline-block mb-6">
-              {/* Removed brightness-110 to keep logo natural on light bg */}
-              <img src={assets.logo} alt="Acadevo" className="h-10 w-auto" />
+            <Link to="/" aria-label={`${site.name} home`}>
+              <Logo tone="light" />
             </Link>
-            <p className="text-slate-600 leading-relaxed mb-8 max-w-sm">
-              We provide the tools, the network, and the mentorship to help African tech talent compete on a global stage.
-            </p>
-            <div className="flex gap-4">
-              {[Twitter, Instagram, Linkedin, Github].map((Icon, i) => (
-                <a 
-                  key={i} 
-                  href="#" 
-                  className="w-11 h-11 rounded-full bg-slate-900/5 border border-slate-900/10 flex items-center justify-center text-slate-700 hover:bg-[#48ADB7] hover:text-white hover:border-[#48ADB7] transition-all duration-300"
-                >
-                  <Icon size={20} />
-                </a>
-              ))}
-            </div>
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">{site.tagline}</p>
+            {site.socials.length > 0 && (
+              <div className="mt-6">
+                <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Social Media</p>
+                <SocialLinks links={site.socials} tone="dark" />
+              </div>
+            )}
           </div>
 
-          {/* Dynamic Link Groups */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title} className="col-span-1">
-              {/* Title color set to the brand teal for visibility */}
-              <h4 className="font-black text-xs uppercase tracking-[0.2em] text-[#409891] mb-8">{title}</h4>
-              <ul className="space-y-4">
-                {links.map((link) => (
-                  <li key={link}>
-                    <Link 
-                      to={`/${link.toLowerCase()}`} 
-                      className="text-slate-600 hover:text-[#48ADB7] transition-colors flex items-center gap-1 group"
-                    >
-                      {link}
-                      <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+          {columns.map((col) => (
+            <div key={col.title}>
+              <h4 className="text-xs font-bold uppercase tracking-[0.16em] text-white">{col.title}</h4>
+              <ul className="mt-5 space-y-3">
+                {col.links.map((l) => (
+                  <li key={l.label}>
+                    <Link to={l.to} className="text-sm text-slate-400 transition hover:text-white">
+                      {l.label}
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </div>
 
-        {/* LEGAL BOTTOM BAR */}
-        <div className="pt-8 border-t border-slate-400/30 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-slate-500 text-sm font-medium">
-            © {currentYear} Acadevo. Proudly founded in Africa.
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-[0.16em] text-white">Contact</h4>
+            <ul className="mt-5 space-y-3 text-sm">
+              <li>
+                <Link to="/contact" className="text-slate-400 transition hover:text-white">
+                  Contact Us
+                </Link>
+              </li>
+              <li className="flex items-center gap-2.5">
+                <MessageCircle size={15} className="shrink-0 text-brand-400" />
+                {wa ? (
+                  <a href={wa} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white">
+                    {whatsappDisplay || "WhatsApp"}
+                  </a>
+                ) : (
+                  <span className="text-slate-500">WhatsApp — coming soon</span>
+                )}
+              </li>
+              <li className="flex items-center gap-2.5">
+                <Mail size={15} className="shrink-0 text-brand-400" />
+                {email ? (
+                  <a href={`mailto:${email}`} className="break-all text-slate-400 hover:text-white">
+                    {email}
+                  </a>
+                ) : (
+                  <span className="text-slate-500">Email — coming soon</span>
+                )}
+              </li>
+              <li className="flex items-center gap-2.5">
+                <MapPin size={15} className="shrink-0 text-brand-400" />
+                <span className="text-slate-400">{location}</span>
+              </li>
+            </ul>
           </div>
-          <div className="flex items-center gap-6 text-sm font-medium text-slate-500">
-            <Link to="/terms" className="hover:text-slate-900 transition-colors">Terms</Link>
-            <Link to="/privacy" className="hover:text-slate-900 transition-colors">Privacy</Link>
-            <Link to="/cookies" className="hover:text-slate-900 transition-colors">Cookies</Link>
-          </div>
-          <div className="flex items-center gap-2 px-4 py-2 bg-slate-900/5 rounded-full border border-slate-900/5 text-xs text-slate-600">
-            <Heart size={12} className="text-[#48ADB7] fill-[#48ADB7]" />
-            Building for 1.2B people
-          </div>
+        </div>
+      </div>
+      <div className="border-t border-white/10">
+        <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-slate-500 sm:flex-row">
+          <p>© 2026 {site.name}. All rights reserved.</p>
+          <p>Technology company &amp; academy · {location}</p>
         </div>
       </div>
     </footer>

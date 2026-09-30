@@ -1,9 +1,54 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { User, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle, BookOpen, Loader } from "lucide-react";
+import { User, Mail, Lock, Eye, EyeOff, AlertCircle, CheckCircle, Loader } from "lucide-react";
 import api from "../utils/api.js";
+import AuthLayout from "../components/AuthLayout";
+import usePageTitle from "../hooks/usePageTitle";
+
+const getPasswordStrength = (pass) => {
+  if (!pass) return { strength: 0, label: "", color: "", bar: "" };
+  let strength = 0;
+  if (pass.length >= 8) strength++;
+  if (/[a-z]/.test(pass) && /[A-Z]/.test(pass)) strength++;
+  if (/\d/.test(pass)) strength++;
+  if (/[^a-zA-Z\d]/.test(pass)) strength++;
+  const levels = [
+    { strength: 0, label: "", color: "", bar: "" },
+    { strength: 1, label: "Weak", color: "text-red-500", bar: "bg-red-500" },
+    { strength: 2, label: "Fair", color: "text-orange-500", bar: "bg-orange-500" },
+    { strength: 3, label: "Good", color: "text-amber-500", bar: "bg-amber-500" },
+    { strength: 4, label: "Strong", color: "text-emerald-600", bar: "bg-emerald-500" },
+  ];
+  return levels[strength];
+};
+
+const PasswordInput = ({ id, value, onChange, show, onToggle, placeholder, disabled, autoComplete }) => (
+  <div className="relative">
+    <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+    <input
+      id={id}
+      type={show ? "text" : "password"}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      autoComplete={autoComplete}
+      className="input pl-11 pr-12"
+      disabled={disabled}
+    />
+    <button
+      type="button"
+      onClick={onToggle}
+      className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition hover:text-brand"
+      aria-label={show ? "Hide password" : "Show password"}
+      disabled={disabled}
+    >
+      {show ? <EyeOff size={18} /> : <Eye size={18} />}
+    </button>
+  </div>
+);
 
 const Register = () => {
+  usePageTitle("Join the Academy");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,54 +60,28 @@ const Register = () => {
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
-  // Password strength checker
-  const getPasswordStrength = (pass) => {
-    if (!pass) return { strength: 0, label: "", color: "" };
-    
-    let strength = 0;
-    if (pass.length >= 8) strength++;
-    if (/[a-z]/.test(pass) && /[A-Z]/.test(pass)) strength++;
-    if (/\d/.test(pass)) strength++;
-    if (/[^a-zA-Z\d]/.test(pass)) strength++;
-
-    const levels = [
-      { strength: 0, label: "", color: "" },
-      { strength: 1, label: "Weak", color: "text-red-500" },
-      { strength: 2, label: "Fair", color: "text-orange-500" },
-      { strength: 3, label: "Good", color: "text-yellow-500" },
-      { strength: 4, label: "Strong", color: "text-green-500" }
-    ];
-
-    return levels[strength];
-  };
-
   const passwordStrength = getPasswordStrength(password);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    // Validation
     if (!name || !email || !password || !confirmPassword) {
       setError("Please fill in all fields");
       return;
     }
-
     if (name.length < 2) {
       setError("Name must be at least 2 characters long");
       return;
     }
-
     if (!/\S+@\S+\.\S+/.test(email)) {
       setError("Please enter a valid email address");
       return;
     }
-
     if (password.length < 6) {
       setError("Password must be at least 6 characters long");
       return;
     }
-
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
@@ -71,19 +90,12 @@ const Register = () => {
     try {
       setLoading(true);
       await api.post("/auth/register", { name, email, password });
-      
       setSuccess(true);
-      
-      // Redirect to login after 2 seconds
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000);
+      setTimeout(() => navigate("/login"), 2000);
     } catch (err) {
-      console.error("Registration or login error:", err);
-      ;
-      
+      console.error("Registration error:", err);
       if (err.response?.status === 409 || err.response?.data?.message?.includes("exists")) {
-        setError("This email is already registered. Please login instead.");
+        setError("This email is already registered. Please log in instead.");
       } else if (err.response?.data?.message) {
         setError(err.response.data.message);
       } else if (err.message === "Network Error") {
@@ -96,202 +108,124 @@ const Register = () => {
     }
   };
 
-  if (success) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-[#E6E5E1] via-[#BAD0CC]/20 to-[#E6E5E1] flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="text-green-600" size={32} />
-          </div>
-          <h2 className="text-2xl font-bold text-[#2d6b66] mb-2">Registration Successful!</h2>
-          <p className="text-gray-600 mb-4">Your account has been created successfully.</p>
-          <p className="text-sm text-gray-500">Redirecting to login page...</p>
-        </div>
-      </div>
-    );
-  }
+  const clear = (setter) => (e) => {
+    setter(e.target.value);
+    setError("");
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#E6E5E1] via-[#BAD0CC]/20 to-[#E6E5E1] flex items-center justify-center p-4">
-      {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#409891]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#48ADB7]/10 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="relative w-full max-w-md">
-        {/* Logo/Brand */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#409891] to-[#48ADB7] rounded-xl flex items-center justify-center">
-              <BookOpen className="text-white" size={24} />
-            </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-[#409891] to-[#48ADB7] bg-clip-text text-transparent">
-              Acadevo
-            </h1>
-          </div>
-          <p className="text-gray-600">Start your learning journey today!</p>
+    <AuthLayout
+      title={success ? "You're in!" : "Join the Academy"}
+      subtitle={
+        success
+          ? "Your account has been created successfully."
+          : "Create your ToppestTech account to join the Academy and hear first about new sessions and programs."
+      }
+      points={["Practical, hands-on learning", "Real projects", "A growing community of learners"]}
+      footer={
+        !success && (
+          <>
+            Already have an account?{" "}
+            <Link to="/login" className="font-semibold text-brand hover:text-brand-700">
+              Log in
+            </Link>
+          </>
+        )
+      }
+    >
+      {success ? (
+        <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-center">
+          <CheckCircle className="mx-auto text-emerald-600" size={36} />
+          <p className="mt-3 font-semibold text-emerald-800">Registration successful</p>
+          <p className="mt-1 text-sm text-emerald-700">Redirecting you to the login page…</p>
         </div>
-
-        {/* Register Card */}
-        <div className="bg-white rounded-2xl shadow-2xl p-8 border-2 border-[#BAD0CC]/30">
-          <h2 className="text-2xl font-bold text-[#2d6b66] mb-6 text-center">Create Your Account</h2>
-
-          {/* Error Alert */}
+      ) : (
+        <>
           {error && (
-            <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4 mb-6 flex items-start gap-3">
-              <AlertCircle className="text-red-500 flex-shrink-0 mt-0.5" size={20} />
-              <p className="text-sm text-red-700 font-medium">{error}</p>
+            <div className="mb-6 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4">
+              <AlertCircle className="mt-0.5 shrink-0 text-red-500" size={18} />
+              <p className="text-sm font-medium text-red-700">{error}</p>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Name Field */}
+          <form onSubmit={handleSubmit} className="space-y-5" noValidate>
             <div>
-              <label className="block text-sm font-semibold text-[#2d6b66] mb-2">
-                Full Name
-              </label>
+              <label htmlFor="reg-name" className="label">Full name</label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  value={name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                    setError("");
-                  }}
-                  className="w-full pl-10 pr-4 py-3 border-2 border-[#BAD0CC] rounded-xl focus:border-[#409891] focus:outline-none focus:ring-2 focus:ring-[#409891]/20 transition-all"
-                  disabled={loading}
-                />
+                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                <input id="reg-name" type="text" autoComplete="name" placeholder="Your full name" value={name} onChange={clear(setName)} className="input pl-11" disabled={loading} />
               </div>
             </div>
 
-            {/* Email Field */}
             <div>
-              <label className="block text-sm font-semibold text-[#2d6b66] mb-2">
-                Email Address
-              </label>
+              <label htmlFor="reg-email" className="label">Email address</label>
               <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="email"
-                  placeholder="your.email@example.com"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    setError("");
-                  }}
-                  className="w-full pl-10 pr-4 py-3 border-2 border-[#BAD0CC] rounded-xl focus:border-[#409891] focus:outline-none focus:ring-2 focus:ring-[#409891]/20 transition-all"
-                  disabled={loading}
-                />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                <input id="reg-email" type="email" autoComplete="email" placeholder="you@example.com" value={email} onChange={clear(setEmail)} className="input pl-11" disabled={loading} />
               </div>
             </div>
 
-            {/* Password Field */}
             <div>
-              <label className="block text-sm font-semibold text-[#2d6b66] mb-2">
-                Password
-              </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Create a strong password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    setError("");
-                  }}
-                  className="w-full pl-10 pr-12 py-3 border-2 border-[#BAD0CC] rounded-xl focus:border-[#409891] focus:outline-none focus:ring-2 focus:ring-[#409891]/20 transition-all"
-                  disabled={loading}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#409891] transition-colors"
-                  disabled={loading}
-                >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                </button>
-              </div>
+              <label htmlFor="reg-password" className="label">Password</label>
+              <PasswordInput
+                id="reg-password"
+                value={password}
+                onChange={clear(setPassword)}
+                show={showPassword}
+                onToggle={() => setShowPassword(!showPassword)}
+                placeholder="Create a strong password"
+                autoComplete="new-password"
+                disabled={loading}
+              />
               {password && (
-                <p className={`text-xs mt-1 font-medium ${passwordStrength.color}`}>
-                  Password Strength: {passwordStrength.label}
-                </p>
+                <div className="mt-2 flex items-center gap-3">
+                  <div className="flex flex-1 gap-1">
+                    {[1, 2, 3, 4].map((n) => (
+                      <span
+                        key={n}
+                        className={`h-1 flex-1 rounded-full ${n <= passwordStrength.strength ? passwordStrength.bar : "bg-slate-200"}`}
+                      />
+                    ))}
+                  </div>
+                  <span className={`text-xs font-semibold ${passwordStrength.color}`}>{passwordStrength.label}</span>
+                </div>
               )}
             </div>
 
-            {/* Confirm Password Field */}
             <div>
-              <label className="block text-sm font-semibold text-[#2d6b66] mb-2">
-                Confirm Password
-              </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type={showConfirmPassword ? "text" : "password"}
-                  placeholder="Confirm your password"
-                  value={confirmPassword}
-                  onChange={(e) => {
-                    setConfirmPassword(e.target.value);
-                    setError("");
-                  }}
-                  className="w-full pl-10 pr-12 py-3 border-2 border-[#BAD0CC] rounded-xl focus:border-[#409891] focus:outline-none focus:ring-2 focus:ring-[#409891]/20 transition-all"
-                  disabled={loading}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#409891] transition-colors"
-                  disabled={loading}
-                >
-                  {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                </button>
-              </div>
+              <label htmlFor="reg-confirm" className="label">Confirm password</label>
+              <PasswordInput
+                id="reg-confirm"
+                value={confirmPassword}
+                onChange={clear(setConfirmPassword)}
+                show={showConfirmPassword}
+                onToggle={() => setShowConfirmPassword(!showConfirmPassword)}
+                placeholder="Confirm your password"
+                autoComplete="new-password"
+                disabled={loading}
+              />
               {confirmPassword && password !== confirmPassword && (
-                <p className="text-xs text-red-500 mt-1 font-medium">Passwords don't match</p>
+                <p className="mt-1.5 text-xs font-medium text-red-500">Passwords don't match</p>
               )}
             </div>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-full py-3 rounded-xl font-bold text-white transition-all ${
-                loading
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-[#409891] to-[#48ADB7] hover:shadow-lg hover:scale-[1.02]"
-              }`}
-            >
+            <button type="submit" disabled={loading} className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60">
               {loading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <Loader className="animate-spin" size={20} />
-                  Creating account...
-                </span>
+                <>
+                  <Loader className="animate-spin" size={18} /> Creating account…
+                </>
               ) : (
                 "Create Account"
               )}
             </button>
           </form>
 
-          {/* Login Link */}
-          <div className="mt-6 text-center">
-            <p className="text-gray-600">
-              Already have an account?{" "}
-              <Link to="/login" className="text-[#409891] font-bold hover:text-[#2d6b66]">
-                Login here
-              </Link>
-            </p>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <p className="text-center text-sm text-gray-500 mt-6">
-          By signing up, you agree to Acadevo's Terms of Service and Privacy Policy
-        </p>
-      </div>
-    </div>
+          <p className="mt-6 text-center text-xs text-slate-400">
+            By signing up, you agree to ToppestTech's Terms of Service and Privacy Policy.
+          </p>
+        </>
+      )}
+    </AuthLayout>
   );
 };
 

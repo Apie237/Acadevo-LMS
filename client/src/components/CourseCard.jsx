@@ -1,100 +1,64 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BookOpen, Calendar, ArrowRight, Info } from "lucide-react";
+import { BookOpen, Calendar, ArrowRight } from "lucide-react";
 
 const CourseCard = ({ course }) => {
   const totalLessons = course.lessons?.length || 0;
+  const image = course.thumbnail || course.imageUrl;
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
-      {/* Course Image */}
-      <Link to={`/courses/${course._id}`} className="block">
-        <div className="relative h-48 overflow-hidden bg-gradient-to-br from-[#409891] to-[#48ADB7]">
-          {course.thumbnail || course.imageUrl ? (
-            <img
-              src={course.thumbnail || course.imageUrl}
-              alt={course.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <BookOpen size={48} className="text-white opacity-50" />
-            </div>
-          )}
-          
-          {/* Status Badge */}
-          {course.status && (
-            <div className="absolute top-4 left-4">
-              <span className={`px-4 py-2 rounded-full text-sm font-bold shadow-lg ${
-                course.status === "TBA" 
-                  ? "bg-purple-500 text-white" 
-                  : "bg-yellow-400 text-gray-900"
-              }`}>
-                {course.status}
-              </span>
-            </div>
-          )}
-        </div>
-      </Link>
-
-      {/* Course Content */}
-      <div className="p-6">
-        {/* Course Title */}
-        <Link to={`/courses/${course._id}`}>
-          <h3 className="text-xl font-bold text-[#2d6b66] mb-3 line-clamp-2 group-hover:text-[#409891] transition-colors">
-            {course.title}
-          </h3>
-        </Link>
-
-        {/* Course Description */}
-        <p className="text-gray-600 text-sm mb-4 line-clamp-3">
-          {course.description}
-        </p>
-
-        {/* Course Meta Info */}
-        <div className="flex items-center gap-4 text-sm text-gray-500 mb-4 pb-4 border-b border-[#BAD0CC]">
-          <div className="flex items-center gap-1">
-            <BookOpen size={16} className="text-[#409891]" />
-            <span>{totalLessons} Lessons</span>
-          </div>
-          {course.duration && (
-            <div className="flex items-center gap-1">
-              <Calendar size={16} className="text-[#409891]" />
-              <span>{course.duration} Months</span>
-            </div>
-          )}
-        </div>
-
-        {/* Price Display */}
-        {course.price !== undefined && (
-          <div className="mb-4">
-            <p className="text-2xl font-bold text-[#2d6b66]">
-              ${course.price}
-              <span className="text-sm font-normal text-gray-500 ml-2">/month</span>
-            </p>
+    <Link
+      to={`/courses/${course._id}`}
+      className="group card flex h-full flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-lift"
+    >
+      <div className="relative h-48 overflow-hidden bg-gradient-to-br from-navy-700 to-navy-900">
+        {image ? (
+          <img
+            src={image}
+            alt={course.title}
+            loading="lazy"
+            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <BookOpen size={44} className="text-white/40" />
           </div>
         )}
-
-        {/* Action Buttons */}
-        <div className="space-y-3">
-          <Link 
-            to={`/courses/${course._id}`}
-            className="w-full bg-gradient-to-r from-[#00d9a3] to-[#00e5b0] text-white font-bold py-3 px-6 rounded-xl hover:from-[#00c490] hover:to-[#00d19d] transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 group"
-          >
-            Register Interest
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-          <Link 
-            to={`/courses/${course._id}`}
-            className="w-full text-[#409891] font-semibold py-2 hover:text-[#2d6b66] transition-colors flex items-center justify-center gap-2 group"
-          >
-            <Info size={18} />
-            View Full Details
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
+        {course.status && (
+          <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-bold text-navy shadow-soft">
+            {course.status}
+          </span>
+        )}
       </div>
-    </div>
+
+      <div className="flex flex-1 flex-col p-6">
+        {course.category && (
+          <span className="w-fit rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold text-brand-700">
+            {course.category}
+          </span>
+        )}
+        <h3 className="mt-3 line-clamp-2 text-lg font-bold text-ink">{course.title}</h3>
+        <p className="mt-2 line-clamp-3 flex-1 text-sm text-muted">{course.description}</p>
+
+        <div className="mt-5 flex items-center gap-4 border-t border-line pt-4 text-sm text-muted">
+          <span className="flex items-center gap-1.5">
+            <BookOpen size={15} className="text-brand" /> {totalLessons} Lessons
+          </span>
+          {course.duration && (
+            <span className="flex items-center gap-1.5">
+              <Calendar size={15} className="text-brand" /> {course.duration} Months
+            </span>
+          )}
+          {course.price !== undefined && (
+            <span className="ml-auto font-bold text-ink">${course.price}</span>
+          )}
+        </div>
+
+        <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand">
+          View details <ArrowRight size={15} className="transition group-hover:translate-x-0.5" />
+        </span>
+      </div>
+    </Link>
   );
 };
 

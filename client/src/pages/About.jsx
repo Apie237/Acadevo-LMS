@@ -1,113 +1,162 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { Target, Users, Award, ShieldCheck } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Target, Eye, Award, Hammer, Lightbulb, Users, Code2, GraduationCap, ArrowRight } from "lucide-react";
+import PageHeader from "../components/PageHeader";
+import SectionHeading from "../components/SectionHeading";
+import ServiceCard from "../components/ServiceCard";
+import CTASection from "../components/CTASection";
+import Reveal from "../components/Reveal";
+import usePageTitle from "../hooks/usePageTitle";
+
+const values = [
+  {
+    icon: Award,
+    title: "Excellence",
+    description: "We take pride in doing things well — in the software we build and in the way we teach.",
+  },
+  {
+    icon: Hammer,
+    title: "Practical Learning",
+    description: "We believe skills are built by doing. Our learning is hands-on and project-focused.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Innovation",
+    description: "We look for better, simpler ways to solve problems with technology.",
+  },
+  {
+    icon: Users,
+    title: "Community",
+    description: "We grow together — learners, developers and technology enthusiasts supporting each other.",
+  },
+];
 
 const About = () => {
-  const stats = [
-    { label: "Mentors", value: "200+" },
-    { label: "Countries", value: "15+" },
-    { label: "Hours of Content", value: "5k+" },
-  ];
-
-  const values = [
-    {
-      icon: <Target className="text-[#48ADB7]" size={24} />,
-      title: "Our Mission",
-      description: "To bridge the global tech gap by providing world-class education to African talent."
-    },
-    {
-      icon: <ShieldCheck className="text-[#48ADB7]" size={24} />,
-      title: "Our Quality",
-      description: "Curriculum vetted by industry leads from Google, Meta, and top African startups."
-    },
-    {
-      icon: <Users className="text-[#48ADB7]" size={24} />,
-      title: "Community First",
-      description: "A supportive ecosystem where peers grow together and build lasting networks."
-    }
-  ];
-
+  usePageTitle("About");
   return (
-    <section className="relative bg-[#0F172A] text-white py-24 overflow-hidden">
-      {/* Decorative Blur Background */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#409891]/5 rounded-full blur-[100px]" />
-      
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-          
-          {/* Left Side: Image with custom shape */}
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div 
-              className="relative aspect-square w-full max-w-md mx-auto bg-gradient-to-br from-[#409891] to-[#48ADB7] overflow-hidden"
-              style={{ clipPath: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)" }}
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&fit=crop" 
-                alt="Our team" 
-                className="w-full h-full object-cover mix-blend-overlay opacity-90"
-              />
-            </div>
-            {/* Floating Experience Tag */}
-            <div className="absolute -bottom-6 -right-4 bg-white p-6 rounded-2xl shadow-xl hidden md:block">
-              <p className="text-[#0F172A] text-4xl font-black italic">05+</p>
-              <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">Years of Excellence</p>
-            </div>
-          </motion.div>
+    <>
+      <PageHeader
+        eyebrow="About ToppestTech"
+        title="Building technology."
+        highlight="Developing talent."
+        description="ToppestTech is a technology company and academy focused on creating digital solutions and developing practical technology talent."
+      />
 
-          {/* Right Side: Text Content */}
-          <div className="z-10">
-            <h4 className="text-[#48ADB7] font-bold tracking-[0.3em] uppercase text-sm mb-4">
-              Behind the Platform
-            </h4>
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-8 leading-tight">
-              Empowering the Next Generation of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#409891] to-[#48ADB7]">African Tech Titans.</span>
-            </h2>
-            <p className="text-gray-400 text-lg leading-relaxed mb-8">
-              Acadevo started with a simple observation: Africa has the youngest, most ambitious population on earth, but access to high-tier technical mentorship was fragmented. 
-              <br /><br />
-              We built a bridge. A place where rigorous engineering meets local context, ensuring our graduates don't just find jobs—they lead industries.
-            </p>
-
-            <div className="flex gap-10 border-t border-white/10 pt-8">
-              {stats.map((stat, index) => (
-                <div key={index}>
-                  <p className="text-3xl font-bold text-white">{stat.value}</p>
-                  <p className="text-gray-500 text-sm">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+      {/* Who we are */}
+      <section className="section">
+        <div className="container-page grid gap-14 lg:grid-cols-2 lg:items-center">
+          <div>
+            <SectionHeading align="left" eyebrow="Who We Are" title="One organisation, two connected sides" />
+            <Reveal delay={0.1}>
+              <p className="mt-6 leading-relaxed text-muted">
+                On one side, we design and build websites, web applications and digital platforms for businesses,
+                organisations and institutions. On the other, ToppestTech Academy helps aspiring developers build
+                practical technology skills.
+              </p>
+              <p className="mt-4 leading-relaxed text-muted">
+                The two sides strengthen each other: real project experience shapes what we teach, and the Academy
+                helps grow the technology talent we believe Africa needs. We are an emerging company — we have
+                completed our first hands-on learning session with around 15 students and we are building from there,
+                step by step.
+              </p>
+            </Reveal>
+          </div>
+          <div className="grid gap-5 sm:grid-cols-2">
+            {[
+              {
+                icon: Code2,
+                title: "ToppestTech Technology",
+                text: "Websites, web applications, school management systems, business software, e-commerce and UI/UX.",
+                to: "/services",
+                cta: "Our services",
+              },
+              {
+                icon: GraduationCap,
+                title: "ToppestTech Academy",
+                text: "Practical, hands-on technology education for aspiring developers and technology professionals.",
+                to: "/academy",
+                cta: "The Academy",
+              },
+            ].map((c, i) => (
+              <Reveal key={c.title} delay={i * 0.1} className="h-full">
+                <Link
+                  to={c.to}
+                  className={`group flex h-full flex-col rounded-2xl p-7 transition hover:-translate-y-1 ${
+                    i === 0 ? "bg-navy text-white" : "border border-line bg-brand-50"
+                  }`}
+                >
+                  <span
+                    className={`flex h-12 w-12 items-center justify-center rounded-xl ${
+                      i === 0 ? "bg-brand text-white" : "bg-white text-brand shadow-soft"
+                    }`}
+                  >
+                    <c.icon size={22} />
+                  </span>
+                  <h3 className={`mt-6 text-lg font-bold ${i === 0 ? "text-white" : "text-ink"}`}>{c.title}</h3>
+                  <p className={`mt-2 flex-1 text-sm leading-relaxed ${i === 0 ? "text-slate-300" : "text-muted"}`}>
+                    {c.text}
+                  </p>
+                  <span
+                    className={`mt-6 inline-flex items-center gap-1.5 text-sm font-semibold ${
+                      i === 0 ? "text-brand-300" : "text-brand"
+                    }`}
+                  >
+                    {c.cta} <ArrowRight size={15} className="transition group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </div>
+      </section>
 
-        {/* Values Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/[0.08] transition-all group"
-            >
-              <div className="w-14 h-14 bg-[#409891]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                {value.icon}
+      {/* Mission & vision */}
+      <section className="section bg-slate-50">
+        <div className="container-page grid gap-6 md:grid-cols-2">
+          {[
+            {
+              icon: Target,
+              title: "Our Mission",
+              text: "To build useful digital solutions and provide practical technology education that empowers individuals and organizations.",
+            },
+            {
+              icon: Eye,
+              title: "Our Vision",
+              text: "To become a growing technology company and academy creating opportunities for technology talent and digital innovation in Africa.",
+            },
+          ].map((m, i) => (
+            <Reveal key={m.title} delay={i * 0.1} className="h-full">
+              <div className="card relative h-full overflow-hidden p-8 sm:p-10">
+                <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-50" />
+                <span className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-glow">
+                  <m.icon size={22} />
+                </span>
+                <h3 className="relative mt-6 text-2xl font-extrabold tracking-tight text-ink">{m.title}</h3>
+                <p className="relative mt-3 text-lg leading-relaxed text-muted">{m.text}</p>
               </div>
-              <h3 className="text-xl font-bold mb-3">{value.title}</h3>
-              <p className="text-gray-400 leading-relaxed text-sm">
-                {value.description}
-              </p>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Values */}
+      <section className="section">
+        <div className="container-page">
+          <SectionHeading
+            eyebrow="Our Values"
+            title="What guides our work"
+            description="Four values shape how we build software and how we teach."
+          />
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {values.map((v, i) => (
+              <ServiceCard key={v.title} {...v} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTASection title="Let's build what's next, together." />
+    </>
   );
 };
 

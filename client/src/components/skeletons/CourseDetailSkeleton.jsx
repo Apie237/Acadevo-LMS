@@ -1,13 +1,13 @@
 import React from "react";
 const CourseDetailSkeleton = () => {
   return (
-    <div className="min-h-screen bg-[#E6E5E1]">
+    <div className="min-h-screen bg-slate-50">
       {/* Hero Section Skeleton */}
-      <div className="relative bg-gradient-to-br from-[#2d3e7e] via-[#4a3d80] to-[#6b4b8a] text-white overflow-hidden">
+      <div className="relative bg-gradient-to-br from-navy via-navy-700 to-navy-900 text-white overflow-hidden">
         {/* Decorative Pattern Overlay */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#409891] rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#48ADB7] rounded-full blur-3xl"></div>
+          <div className="absolute top-0 right-0 w-96 max-w-full h-96 bg-navy rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 max-w-full h-96 bg-brand rounded-full blur-3xl"></div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 py-12">
@@ -89,7 +89,7 @@ const CourseDetailSkeleton = () => {
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div
                     key={i}
-                    className="flex items-center justify-between p-5 bg-gradient-to-r from-[#E6E5E1] to-white rounded-xl border border-[#BAD0CC]/30"
+                    className="flex items-center justify-between p-5 bg-gradient-to-r from-slate-50 to-white rounded-xl border border-line/30"
                   >
                     <div className="flex items-center gap-4 flex-1">
                       <div className="w-10 h-10 bg-gray-200 rounded-xl animate-pulse"></div>
@@ -109,7 +109,7 @@ const CourseDetailSkeleton = () => {
               {[1, 2, 3, 4].map((i) => (
                 <div
                   key={i}
-                  className="bg-gradient-to-br from-[#409891]/10 to-[#48ADB7]/10 rounded-2xl p-8 border border-[#409891]/20"
+                  className="bg-gradient-to-br from-navy/10 to-brand/10 rounded-2xl p-8 border border-navy/20"
                 >
                   <div className="w-14 h-14 bg-gray-200 rounded-xl mb-4 animate-pulse"></div>
                   <div className="h-6 bg-gray-200 rounded w-3/4 mb-2 animate-pulse"></div>
@@ -121,7 +121,7 @@ const CourseDetailSkeleton = () => {
 
           {/* Right Column - Sticky Pricing Card Skeleton */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-3xl shadow-2xl p-8 sticky top-8 border-2 border-[#BAD0CC]/50">
+            <div className="bg-white rounded-3xl shadow-2xl p-8 sticky top-8 border-2 border-line/50">
               <div className="h-7 bg-gray-200 rounded w-full mb-6 animate-pulse"></div>
 
               <div className="space-y-4 mb-8">
@@ -137,7 +137,7 @@ const CourseDetailSkeleton = () => {
               <div className="h-14 bg-gray-200 rounded-2xl mb-8 animate-pulse"></div>
 
               {/* Additional Info Skeleton */}
-              <div className="mt-8 pt-8 border-t-2 border-[#BAD0CC]/30 space-y-4">
+              <div className="mt-8 pt-8 border-t-2 border-line/30 space-y-4">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-5 h-5 bg-gray-200 rounded animate-pulse"></div>

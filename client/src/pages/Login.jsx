@@ -1,29 +1,26 @@
-// ============================================
-// LOGIN.JSX - Enhanced Login Page
-// ============================================
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { Mail, Lock, Eye, EyeOff, AlertCircle, BookOpen, Loader } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Mail, Lock, Eye, EyeOff, AlertCircle, Loader } from "lucide-react";
 import api from "../utils/api.js";
+import AuthLayout from "../components/AuthLayout";
+import usePageTitle from "../hooks/usePageTitle";
 
 const Login = () => {
+  usePageTitle("Log in");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    // Validation
     if (!email || !password) {
       setError("Please fill in all fields");
       return;
     }
-
     if (!/\S+@\S+\.\S+/.test(email)) {
       setError("Please enter a valid email address");
       return;
@@ -32,14 +29,11 @@ const Login = () => {
     try {
       setLoading(true);
       const res = await api.post("/auth/login", { email, password });
-      
       localStorage.setItem("token", res.data.token);
-      
-      // Success - redirect to dashboard
-      window.location.href = "https://acadevo.vercel.app/";
+      // Full reload so every page picks up the new session.
+      window.location.href = "/";
     } catch (err) {
       console.error("Login error:", err);
-      
       if (err.response?.status === 401) {
         setError("Invalid email or password");
       } else if (err.response?.status === 404) {
@@ -57,137 +51,92 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#E6E5E1] via-[#BAD0CC]/20 to-[#E6E5E1] flex items-center justify-center p-4">
-      {/* Background Decorations */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#409891]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#48ADB7]/10 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="relative w-full max-w-md">
-        {/* Logo/Brand */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-[#409891] to-[#48ADB7] rounded-xl flex items-center justify-center">
-              <BookOpen className="text-white" size={24} />
-            </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-[#409891] to-[#48ADB7] bg-clip-text text-transparent">
-              Acadevo
-            </h1>
-          </div>
-          <p className="text-gray-600">Welcome back! Please login to continue</p>
+    <AuthLayout
+      title="Welcome back"
+      subtitle="Log in to your ToppestTech account to continue learning."
+      points={["Access your courses", "Continue where you left off", "Stay connected with the Academy"]}
+      footer={
+        <>
+          Don't have an account?{" "}
+          <Link to="/register" className="font-semibold text-brand hover:text-brand-700">
+            Create one
+          </Link>
+        </>
+      }
+    >
+      {error && (
+        <div className="mb-6 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4">
+          <AlertCircle className="mt-0.5 shrink-0 text-red-500" size={18} />
+          <p className="text-sm font-medium text-red-700">{error}</p>
         </div>
+      )}
 
-        {/* Login Card */}
-        <div className="bg-white rounded-2xl shadow-2xl p-8 border-2 border-[#BAD0CC]/30">
-          <h2 className="text-2xl font-bold text-[#2d6b66] mb-6 text-center">Login to Your Account</h2>
-
-          {/* Error Alert */}
-          {error && (
-            <div className="bg-red-50 border-2 border-red-200 rounded-xl p-4 mb-6 flex items-start gap-3">
-              <AlertCircle className="text-red-500 flex-shrink-0 mt-0.5" size={20} />
-              <p className="text-sm text-red-700 font-medium">{error}</p>
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Email Field */}
-            <div>
-              <label className="block text-sm font-semibold text-[#2d6b66] mb-2">
-                Email Address
-              </label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="email"
-                  placeholder="your.email@example.com"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    setError("");
-                  }}
-                  className="w-full pl-10 pr-4 py-3 border-2 border-[#BAD0CC] rounded-xl focus:border-[#409891] focus:outline-none focus:ring-2 focus:ring-[#409891]/20 transition-all"
-                  disabled={loading}
-                />
-              </div>
-            </div>
-
-            {/* Password Field */}
-            <div>
-              <label className="block text-sm font-semibold text-[#2d6b66] mb-2">
-                Password
-              </label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                    setError("");
-                  }}
-                  className="w-full pl-10 pr-12 py-3 border-2 border-[#BAD0CC] rounded-xl focus:border-[#409891] focus:outline-none focus:ring-2 focus:ring-[#409891]/20 transition-all"
-                  disabled={loading}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-[#409891] transition-colors"
-                  disabled={loading}
-                >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                </button>
-              </div>
-            </div>
-
-            {/* Forgot Password Link */}
-            <div className="text-right">
-              <a href="#" className="text-sm text-[#409891] hover:text-[#2d6b66] font-semibold">
-                Forgot Password?
-              </a>
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
+      <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+        <div>
+          <label htmlFor="login-email" className="label">Email address</label>
+          <div className="relative">
+            <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+            <input
+              id="login-email"
+              type="email"
+              autoComplete="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError("");
+              }}
+              className="input pl-11"
               disabled={loading}
-              className={`w-full py-3 rounded-xl font-bold text-white transition-all ${
-                loading
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-gradient-to-r from-[#409891] to-[#48ADB7] hover:shadow-lg hover:scale-[1.02]"
-              }`}
-            >
-              {loading ? (
-                <span className="flex items-center justify-center gap-2">
-                  <Loader className="animate-spin" size={20} />
-                  Logging in...
-                </span>
-              ) : (
-                "Login"
-              )}
-            </button>
-          </form>
-
-          {/* Register Link */}
-          <div className="mt-6 text-center">
-            <p className="text-gray-600">
-              Don't have an account?{" "}
-              <Link to="/register" className="text-[#409891] font-bold hover:text-[#2d6b66]">
-                Sign up here
-              </Link>
-            </p>
+            />
           </div>
         </div>
 
-        {/* Footer */}
-        <p className="text-center text-sm text-gray-500 mt-6">
-          By continuing, you agree to Acadevo's Terms of Service and Privacy Policy
-        </p>
-      </div>
-    </div>
+        <div>
+          <label htmlFor="login-password" className="label">Password</label>
+          <div className="relative">
+            <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+            <input
+              id="login-password"
+              type={showPassword ? "text" : "password"}
+              autoComplete="current-password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError("");
+              }}
+              className="input pl-11 pr-12"
+              disabled={loading}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 transition hover:text-brand"
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              disabled={loading}
+            >
+              {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" disabled={loading} className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60">
+          {loading ? (
+            <>
+              <Loader className="animate-spin" size={18} /> Logging in…
+            </>
+          ) : (
+            "Log in"
+          )}
+        </button>
+      </form>
+
+      <p className="mt-6 text-center text-xs text-slate-400">
+        By continuing, you agree to ToppestTech's Terms of Service and Privacy Policy.
+      </p>
+    </AuthLayout>
   );
 };
 
 export default Login;
-

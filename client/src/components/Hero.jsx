@@ -1,141 +1,151 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, MousePointer2, Zap, Globe } from "lucide-react";
+import { ArrowRight, GraduationCap, Code2 } from "lucide-react";
+import { site } from "../data/site";
+
+// Generic developer-workspace photo (no people). Replace with a local file in
+// /public/images/ (e.g. "/images/hero.jpg") whenever you have your own.
+const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80";
+
+const ease = [0.22, 1, 0.36, 1];
+
+const CodeWindow = () => (
+  <div className="w-full max-w-sm rounded-2xl border border-white/10 bg-navy-900/85 p-4 shadow-2xl backdrop-blur-md">
+    <div className="flex items-center gap-1.5">
+      <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+      <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
+      <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
+      <span className="ml-3 text-[11px] font-medium text-slate-500">toppestech.js</span>
+    </div>
+    <pre className="mt-3 overflow-hidden font-mono text-[12px] leading-6 text-slate-300">
+      <code>
+        <span className="text-brand-300">const</span> toppestech = {"{"}
+        {"\n"}  build: [<span className="text-emerald-300">"websites"</span>, <span className="text-emerald-300">"apps"</span>],
+        {"\n"}  teach: <span className="text-emerald-300">"practical skills"</span>,
+        {"\n"}  grow: <span className="text-amber-300">true</span>,
+        {"\n"}{"}"};
+      </code>
+    </pre>
+  </div>
+);
 
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#1F2937] text-white py-20 overflow-hidden">
-      
-      {/* Animated Gradient Orbs */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, 30, 0] 
-          }}
-          transition={{ duration: 20, repeat: Infinity }}
-          className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-[#409891]/20 rounded-full blur-[120px]"
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            x: [0, -40, 0],
-            y: [0, -20, 0] 
-          }}
-          transition={{ duration: 15, repeat: Infinity }}
-          className="absolute bottom-[-10%] right-[-5%] w-[600px] h-[600px] bg-[#48ADB7]/15 rounded-full blur-[120px]"
-        />
-      </div>
+  const [imgFailed, setImgFailed] = useState(false);
 
-      <div className="relative max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-16 items-center">
-        
-        {/* TEXT CONTENT */}
-        <div className="z-10">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-3 mb-6 group"
+  return (
+    <section className="relative overflow-hidden bg-navy text-white">
+      <div className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_30%_20%,black,transparent_70%)]" />
+      <div className="absolute -left-40 top-10 h-[480px] w-[480px] rounded-full bg-brand/20 blur-[140px]" />
+      <div className="absolute -right-20 bottom-[-20%] h-[420px] w-[420px] rounded-full bg-brand-400/20 blur-[140px]" />
+
+      <div className="container-page relative grid items-center gap-14 py-16 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:gap-10 lg:py-28">
+        <div>
+          <motion.span
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease }}
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-brand-200"
           >
-            <span className="h-[2px] w-8 bg-[#48ADB7] group-hover:w-12 transition-all" />
-            <span className="text-[#48ADB7] font-bold tracking-[0.2em] uppercase text-xs">
-              The Next Evolution
-            </span>
-          </motion.div>
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
+            Technology Company &amp; Academy · Cameroon
+          </motion.span>
 
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.85] mb-8"
+            transition={{ duration: 0.7, delay: 0.05, ease }}
+            className="mt-6 text-[2.6rem] font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.1rem]"
           >
-            A NEW <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#409891] via-[#48ADB7] to-white">
-              DIGITAL GENESIS.
+            Technology. Software.{" "}
+            <span className="bg-gradient-to-r from-brand-400 to-brand-200 bg-clip-text text-transparent">
+              Skills for the Future.
             </span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-xl text-gray-400 max-w-lg leading-relaxed mb-12"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15, ease }}
+            className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg"
           >
-            We aren't just teaching code; we're architecting the next decade of borderless innovation through immersion and mastery.
+            ToppestTech is a technology company and academy focused on building digital solutions and providing
+            practical technology skills for aspiring developers and professionals.
           </motion.p>
 
-          {/* Icon-Based Feature List (Replacing Buttons) */}
-          <div className="grid grid-cols-2 gap-8 border-t border-white/10 pt-10">
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-white/5 rounded-2xl border border-white/10">
-                <Zap size={24} className="text-[#48ADB7]" />
-              </div>
-              <div>
-                <h4 className="font-bold">Fast-Track</h4>
-                <p className="text-sm text-gray-500">Accelerated learning paths</p>
-              </div>
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25, ease }}
+            className="mt-9 flex flex-col gap-3 sm:flex-row"
+          >
+            <Link to="/works" className="btn-primary">
+              Explore Our Works <ArrowRight size={16} />
+            </Link>
+            <Link to={site.joinAcademyPath} className="btn-ghost-dark">
+              Join the Academy
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/10 pt-8 text-sm"
+          >
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-brand-300 ring-1 ring-white/10">
+                <Code2 size={17} />
+              </span>
+              <span className="text-slate-300">We build software</span>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="p-3 bg-white/5 rounded-2xl border border-white/10">
-                <Globe size={24} className="text-[#409891]" />
-              </div>
-              <div>
-                <h4 className="font-bold">Global Net</h4>
-                <p className="text-sm text-gray-500">Worldwide opportunities</p>
-              </div>
+            <div className="flex items-center gap-3">
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/5 text-brand-300 ring-1 ring-white/10">
+                <GraduationCap size={17} />
+              </span>
+              <span className="text-slate-300">We train developers</span>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* IMAGE SECTION - Blob / Organic Shape */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="relative flex justify-center"
+          initial={{ opacity: 0, scale: 0.97, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15, ease }}
+          className="relative mx-auto w-full max-w-xl lg:max-w-none"
         >
-          {/* The Blob Container */}
-          <div className="relative w-full max-w-[500px] aspect-square overflow-hidden group">
-            {/* Organic SVG Mask Shape */}
-            <div 
-              className="absolute inset-0 bg-[#1E293B] transition-all duration-700 group-hover:rotate-6"
-              style={{
-                clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
-                borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" 
-              }}
-            >
+          <div className="relative aspect-[4/3.4] overflow-hidden rounded-[1.75rem] border border-white/10 bg-gradient-to-br from-navy-600 to-navy-900 shadow-2xl sm:aspect-[4/3.2]">
+            {!imgFailed && (
               <img
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&fit=crop"
-                alt="Tech Collaboration"
-                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+                src={HERO_IMAGE}
+                alt="Laptop showing code on a developer's desk"
+                onError={() => setImgFailed(true)}
+                className="h-full w-full object-cover opacity-80"
               />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/10 to-transparent" />
+            <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
+              <CodeWindow />
             </div>
+          </div>
 
-            {/* Floating Glass Element */}
-            <motion.div 
-              animate={{ y: [0, 20, 0] }}
-              transition={{ duration: 6, repeat: Infinity }}
-              className="absolute top-1/2 -right-4 translate-y-[-50%] p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl z-20"
-            >
-              <div className="flex -space-x-3 mb-4">
-                {[1,2,3,4].map(i => (
-                  <div key={i} className="w-10 h-10 rounded-full border-2 border-[#0F172A] bg-gray-600 overflow-hidden">
-                    <img src={`https://i.pravatar.cc/100?img=${i+10}`} alt="avatar" />
-                  </div>
-                ))}
-                <div className="w-10 h-10 rounded-full border-2 border-[#0F172A] bg-[#48ADB7] flex items-center justify-center text-[10px] font-bold">
-                  +2k
-                </div>
+          <motion.div
+            initial={{ opacity: 0, x: 16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.6, ease }}
+            className="absolute -right-2 top-6 hidden rounded-2xl bg-white p-4 text-ink shadow-lift sm:block lg:-right-6"
+          >
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand">
+                <GraduationCap size={20} />
+              </span>
+              <div>
+                <p className="text-sm font-bold">First learning session</p>
+                <p className="text-xs text-muted">Completed · 15+ students</p>
               </div>
-              <p className="text-xs font-medium text-gray-300">Developers joining today</p>
-            </motion.div>
-          </div>
-
-          {/* Scroll Indicator (Visual Hint since buttons are gone) */}
-          <div className="absolute -bottom-10 flex flex-col items-center gap-2 opacity-40">
-            <span className="text-[10px] uppercase tracking-[0.3em]">Explore</span>
-            <div className="w-[1px] h-12 bg-gradient-to-b from-[#48ADB7] to-transparent" />
-          </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
