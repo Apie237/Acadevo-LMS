@@ -23,12 +23,12 @@ export const team = [
   },
   {
     id: "chefor-sylvanus",
-    name: "Chefor Sylvanus",
+    name: "Chefor Sylvan",
     role: "Tech Tutor",
     photo: "/images/team/chefor-sylvanus.jpg",
     shortBio: "Tech tutor in TopestTech Academy.",
     bio:
-      "Chefor Sylvanus is a tech tutor in TopestTech Academy, helping students learn through practical, hands-on sessions.", // TODO: review / expand
+      "Chefor Sylvan is a tech tutor in TopestTech Academy, helping students learn through practical, hands-on sessions.", // TODO: review / expand
     expertise: ["Web development", "Software development", "Technology education"], // TODO: confirm
     socials: [],
   },
