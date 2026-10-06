@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X } from "lucide-react";
+import { X, Bot } from "lucide-react";
 import ImagePlaceholder from "./ImagePlaceholder";
 import SocialLinks from "./SocialLinks";
 import { getInitials } from "../utils/text";
@@ -51,6 +51,7 @@ const TeamModal = ({ member, onClose }) => {
                   src={member.photo}
                   alt={member.name}
                   initials={getInitials(member.name)}
+                  icon={member.isAI ? Bot : undefined}
                   variant="navy"
                 />
               </div>

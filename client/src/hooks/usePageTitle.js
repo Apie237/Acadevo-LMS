@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-const BASE = "ToppestTech";
-const DEFAULT = "ToppestTech — Technology, Software & Digital Skills";
+const BASE = "TopestTech";
+const DEFAULT = "TopestTech — Technology, Software & Digital Skills";
 
 // Sets document.title for the current page.
 export default function usePageTitle(title) {

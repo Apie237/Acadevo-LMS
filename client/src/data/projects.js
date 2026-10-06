@@ -1,19 +1,18 @@
 // ---------------------------------------------------------------------------
-// ToppestTech projects ("Works").
+// TopestTech projects ("Works").
 //
-// IMPORTANT: Only Acadevo Africa has details that could be verified from this
-// codebase. The other projects are listed by name with neutral descriptions.
+// IMPORTANT: Only Acadevo has a full case study (verified from this codebase).
+// The other projects are listed with neutral descriptions.
 // Fill in the fields marked TODO with real information – never invent them.
 //
 // Field reference
 //   id           URL slug  -> /works/:id
 //   name         Project name
-//   categories   Any of: "Web Applications", "Websites", "Education",
-//                "Business", "Management Systems" (used by the filter bar)
+//   categories   Any of the projectCategories below (used by the filter bar)
 //   category     Primary label shown on the card
 //   summary      One or two sentences for the card
-//   image        Cover image path, e.g. "/images/projects/eduvest.jpg"
-//                (put the file in client/public/images/projects/). null = placeholder
+//   image        Cover image URL, or a local path like "/images/projects/x.jpg"
+//                (file in client/public/images/projects/). null = placeholder
 //   screenshots  Array of image paths for the detail page
 //   technologies Array of strings
 //   overview / problem / solution  Paragraphs for the case study (optional)
@@ -22,42 +21,18 @@
 //   featured     Show on the homepage
 // ---------------------------------------------------------------------------
 
-export const projectCategories = [
-  "All",
-  "Web Applications",
-  "Websites",
-  "Education",
-  "Business",
-  "Management Systems",
-];
+export const projectCategories = ["All", "Education", "E-Commerce", "Automotive", "Fintech"];
 
 export const projects = [
   {
-    id: "eduvest",
-    name: "EduVest",
-    category: "Education",
-    categories: ["Education", "Web Applications"], // TODO: confirm categories
-    summary: "A digital platform project built by the ToppestTech team.", // TODO: real summary
-    image: null,
-    screenshots: [],
-    technologies: [], // TODO
-    overview: "",
-    problem: "",
-    solution: "",
-    features: [],
-    liveUrl: "",
-    githubUrl: "",
-    featured: true,
-  },
-  {
     id: "acadevo",
-    name: "Acadevo Africa",
+    name: "Acadevo",
     category: "Education",
-    categories: ["Education", "Web Applications", "Management Systems"],
+    categories: ["Education"],
     summary:
       "An online learning platform with a public course catalogue, a student learning hub, an admin dashboard and secure course payments.",
-    image: null,
-    screenshots: [],
+    image: "https://image2url.com/r2/default/images/1770053296924-5e0541b4-b8fe-4233-8513-8afc0657f7c5.png",
+    screenshots: ["https://image2url.com/r2/default/images/1770053296924-5e0541b4-b8fe-4233-8513-8afc0657f7c5.png"],
     technologies: [
       "React",
       "Vite",
@@ -72,7 +47,7 @@ export const projects = [
       "Docker",
     ],
     overview:
-      "Acadevo Africa is a learning management platform made up of four connected applications: a public website where learners discover courses, a student learning hub, an administration dashboard, and a REST API that powers them all.",
+      "Acadevo is a learning management platform made up of four connected applications: a public website where learners discover courses, a student learning hub, an administration dashboard, and a REST API that powers them all.",
     problem:
       "Learners need one place to discover courses, pay for access and then actually follow their lessons, while administrators need a simple way to publish and manage that content.",
     solution:
@@ -92,14 +67,14 @@ export const projects = [
     featured: true,
   },
   {
-    id: "wwm",
-    name: "World Wide Missions",
-    category: "Websites",
-    categories: ["Websites"], // TODO: confirm categories
-    summary: "A website project for World Wide Missions.", // TODO: real summary
-    image: null,
-    screenshots: [],
-    technologies: [],
+    id: "flower-oasis",
+    name: "Flower Oasis",
+    category: "E-Commerce",
+    categories: ["E-Commerce"],
+    summary: "An e-commerce website for Flower Oasis.", // TODO: expand with real details
+    image: "https://image2url.com/r2/default/images/1770053596120-ca8257d8-f731-4bbb-8ec7-b484f9d794b7.png",
+    screenshots: ["https://image2url.com/r2/default/images/1770053596120-ca8257d8-f731-4bbb-8ec7-b484f9d794b7.png"],
+    technologies: [], // TODO
     overview: "",
     problem: "",
     solution: "",
@@ -109,48 +84,31 @@ export const projects = [
     featured: true,
   },
   {
-    id: "treasurit",
-    name: "Treasurit",
-    category: "Web Applications",
-    categories: ["Web Applications", "Business"], // TODO: confirm categories
-    summary: "A digital product built by the ToppestTech team.", // TODO: real summary
-    image: null,
-    screenshots: [],
-    technologies: [],
+    id: "mokex-car-rentals",
+    name: "Mokex Car Rentals",
+    category: "Automotive",
+    categories: ["Automotive"],
+    summary: "A car rental website for Mokex Car Rentals.", // TODO: expand with real details
+    image: "https://image2url.com/r2/default/images/1769788558521-d936e42e-1b45-40fb-8268-6c0eb1f35052.png",
+    screenshots: ["https://image2url.com/r2/default/images/1769788558521-d936e42e-1b45-40fb-8268-6c0eb1f35052.png"],
+    technologies: [], // TODO
     overview: "",
     problem: "",
     solution: "",
     features: [],
     liveUrl: "",
     githubUrl: "",
-    featured: false,
+    featured: true,
   },
   {
-    id: "mirage-rent-car",
-    name: "Mirage Rent Car",
-    category: "Business",
-    categories: ["Websites", "Business"], // TODO: confirm categories
-    summary: "A website project for Mirage Rent Car, a car rental business.", // TODO: real summary
-    image: null,
-    screenshots: [],
-    technologies: [],
-    overview: "",
-    problem: "",
-    solution: "",
-    features: [],
-    liveUrl: "",
-    githubUrl: "",
-    featured: false,
-  },
-  {
-    id: "flower-station-dubai",
-    name: "Flower Station Dubai",
-    category: "Business",
-    categories: ["Websites", "Business"], // TODO: confirm categories
-    summary: "A website project for Flower Station Dubai.", // TODO: real summary
-    image: null,
-    screenshots: [],
-    technologies: [],
+    id: "penwallet",
+    name: "Penwallet",
+    category: "Fintech",
+    categories: ["Fintech"],
+    summary: "A fintech project built by the TopestTech team.", // TODO: expand with real details
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=800&fit=crop&q=80",
+    screenshots: ["https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1200&h=800&fit=crop&q=80"],
+    technologies: [], // TODO
     overview: "",
     problem: "",
     solution: "",

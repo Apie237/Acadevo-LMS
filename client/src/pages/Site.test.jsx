@@ -25,20 +25,20 @@ const renderAt = (path, routePath, element) =>
     </MemoryRouter>
   );
 
-describe("ToppestTech public site", () => {
+describe("TopestTech public site", () => {
   it("home shows the hero, truthful stats and no Acadevo branding claims", () => {
     renderAt("/", "/", <Home />);
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Technology\. Software\./);
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Top Code\. Top Solutions\. Shape the World\./);
     expect(screen.getByText("15+")).toBeInTheDocument();
     expect(screen.queryByText(/200\+|10,000\+|1\.2B/)).toBeNull();
   });
 
   it("works page filters projects by category", async () => {
     renderAt("/works", "/works", <Works />);
-    expect(screen.getAllByText("Acadevo Africa").length).toBeGreaterThan(0);
-    fireEvent.click(screen.getByRole("tab", { name: /^Websites/ }));
-    await waitFor(() => expect(screen.queryByRole("heading", { name: "EduVest" })).toBeNull());
-    expect(screen.getByRole("heading", { name: "World Wide Missions" })).toBeInTheDocument();
+    expect(screen.getAllByText("Acadevo").length).toBeGreaterThan(0);
+    fireEvent.click(screen.getByRole("tab", { name: /^Fintech/ }));
+    await waitFor(() => expect(screen.queryByRole("heading", { name: "Acadevo" })).toBeNull());
+    expect(screen.getByRole("heading", { name: "Penwallet" })).toBeInTheDocument();
   });
 
   it("project detail renders a case study and a 404 for unknown ids", () => {

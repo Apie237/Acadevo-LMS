@@ -1,16 +1,16 @@
 // ---------------------------------------------------------------------------
-// Global site configuration for ToppestTech.
+// Global site configuration for TopestTech.
 // Edit the values here and every page (navbar, footer, contact page) updates.
 // Leave a field as an empty string / empty array when the information is not
 // available yet – the UI shows a tidy "coming soon" state instead of fake data.
 // ---------------------------------------------------------------------------
 
 export const site = {
-  name: "ToppestTech",
-  wordmark: "TOPPESTECH",
-  tagline: "Technology. Software. Skills for the Future.",
+  name: "TopestTech",
+  wordmark: "TOPESTTECH",
+  tagline: "TOP CODE TOP SOLUTIONS SHAPE THE WORLD",
   description:
-    "ToppestTech builds digital solutions and provides practical technology education for aspiring developers and organizations.",
+    "TopestTech builds digital solutions and provides practical technology education for aspiring developers and organizations.",
 
   // Where "Join the Academy" buttons point. The existing registration flow
   // creates a learner account on the learning platform.
@@ -20,7 +20,7 @@ export const site = {
   learnHubUrl: import.meta.env.VITE_LEARNHUB_URL || "https://learnhubacadevo.vercel.app",
 
   contact: {
-    email: "", // e.g. "hello@toppestech.com"
+    email: "", // e.g. "hello@topesttech.com"
     whatsapp: "", // international format without "+" or spaces, e.g. "2376XXXXXXXX"
     whatsappDisplay: "", // e.g. "+237 6XX XXX XXX"
     location: "Cameroon",
@@ -42,7 +42,7 @@ export const navLinks = [
   { label: "Contact", to: "/contact" },
 ];
 
-// Homepage statistics strip – keep these truthful and update as ToppestTech grows.
+// Homepage statistics strip – keep these truthful and update as TopestTech grows.
 export const homeStats = [
   { value: "15+", label: "Students" },
   { value: "1", label: "Learning Session" },

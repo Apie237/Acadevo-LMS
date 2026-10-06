@@ -15,7 +15,7 @@ const Reports = () => {
       <PageHeader
         eyebrow="Reports"
         title="Reports & Updates"
-        description="Transparent write-ups of what we do at ToppestTech Academy — how we prepare, what we teach, and what we learn along the way."
+        description="Transparent write-ups of what we do at TopestTech Academy — how we prepare, what we teach, and what we learn along the way."
       />
 
       <section className="section pt-12 md:pt-16">

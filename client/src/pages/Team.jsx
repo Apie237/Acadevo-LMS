@@ -19,7 +19,7 @@ const Team = () => {
       <PageHeader
         eyebrow="Our Team"
         title="Meet the"
-        highlight="ToppestTech Team"
+        highlight="TopestTech Team"
         description="Meet the people helping us build digital solutions, develop technology talent, and grow our community."
       />
 
@@ -52,7 +52,7 @@ const Team = () => {
 
       <TeamModal member={selected} onClose={close} />
 
-      <CTASection title="Work with the team behind ToppestTech" />
+      <CTASection title="Work with the team behind TopestTech" />
     </>
   );
 };

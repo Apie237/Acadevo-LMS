@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Bot } from "lucide-react";
 import ImagePlaceholder from "./ImagePlaceholder";
 import { getInitials } from "../utils/text";
 
@@ -16,12 +16,20 @@ const TeamCard = ({ member, onOpen }) => (
           src={member.photo}
           alt={member.name}
           initials={getInitials(member.name)}
+          icon={member.isAI ? Bot : undefined}
           variant="navy"
         />
       </div>
     </div>
     <div className="flex flex-1 flex-col p-6">
-      <h3 className="text-lg font-bold text-ink">{member.name}</h3>
+      <div className="flex items-center gap-2">
+        <h3 className="text-lg font-bold text-ink">{member.name}</h3>
+        {member.isAI && (
+          <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand-700">
+            AI
+          </span>
+        )}
+      </div>
       <p className="mt-0.5 text-sm font-semibold text-brand">{member.role}</p>
       <p className="mt-3 text-sm leading-relaxed text-muted">{member.shortBio}</p>
       {member.expertise?.length > 0 && (

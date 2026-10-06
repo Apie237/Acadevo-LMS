@@ -77,7 +77,7 @@ const Home = () => {
               align="left"
               eyebrow="Our Works"
               title="What We've Built"
-              description="A selection of websites, applications and digital platforms built by the ToppestTech team."
+              description="A selection of websites, applications and digital platforms built by the TopestTech team."
             />
             <Reveal>
               <Link to="/works" className="btn-outline">
@@ -104,7 +104,7 @@ const Home = () => {
             <SectionHeading
               align="left"
               tone="light"
-              eyebrow="ToppestTech Academy"
+              eyebrow="TopestTech Academy"
               title="Learn. Build. Grow."
               description="Practical technology education for aspiring developers. We are starting small and building carefully — our first one-week, hands-on learning session is complete, and more structured programs are on the way."
             />

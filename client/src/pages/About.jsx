@@ -36,10 +36,10 @@ const About = () => {
   return (
     <>
       <PageHeader
-        eyebrow="About ToppestTech"
+        eyebrow="About TopestTech"
         title="Building technology."
         highlight="Developing talent."
-        description="ToppestTech is a technology company and academy focused on creating digital solutions and developing practical technology talent."
+        description="TopestTech is a technology company and academy focused on creating digital solutions and developing practical technology talent."
       />
 
       {/* Who we are */}
@@ -50,7 +50,7 @@ const About = () => {
             <Reveal delay={0.1}>
               <p className="mt-6 leading-relaxed text-muted">
                 On one side, we design and build websites, web applications and digital platforms for businesses,
-                organisations and institutions. On the other, ToppestTech Academy helps aspiring developers build
+                organisations and institutions. On the other, TopestTech Academy helps aspiring developers build
                 practical technology skills.
               </p>
               <p className="mt-4 leading-relaxed text-muted">
@@ -65,14 +65,14 @@ const About = () => {
             {[
               {
                 icon: Code2,
-                title: "ToppestTech Technology",
+                title: "TopestTech Technology",
                 text: "Websites, web applications, school management systems, business software, e-commerce and UI/UX.",
                 to: "/services",
                 cta: "Our services",
               },
               {
                 icon: GraduationCap,
-                title: "ToppestTech Academy",
+                title: "TopestTech Academy",
                 text: "Practical, hands-on technology education for aspiring developers and technology professionals.",
                 to: "/academy",
                 cta: "The Academy",

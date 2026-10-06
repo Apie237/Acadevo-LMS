@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import Logo from "./Logo";
+import { site } from "../data/site";
 
 // Split layout for Login / Register: navy brand panel + form panel.
 const AuthLayout = ({ title, subtitle, points = [], children, footer }) => (
@@ -11,11 +12,11 @@ const AuthLayout = ({ title, subtitle, points = [], children, footer }) => (
       <div className="bg-grid-dark absolute inset-0 [mask-image:radial-gradient(ellipse_at_top_left,black,transparent_75%)]" />
       <div className="absolute -bottom-24 -left-24 h-[380px] w-[380px] rounded-full bg-brand/30 blur-[120px]" />
       <div className="relative flex w-full flex-col justify-between p-12 xl:p-16">
-        <Link to="/" aria-label="ToppestTech home">
+        <Link to="/" aria-label="TopestTech home">
           <Logo tone="light" />
         </Link>
         <div>
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-300">ToppestTech Academy</p>
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-300">TopestTech Academy</p>
           <h2 className="mt-4 max-w-md text-4xl font-extrabold leading-tight tracking-tight">
             Learn. Build. <span className="text-brand-400">Grow.</span>
           </h2>
@@ -29,7 +30,7 @@ const AuthLayout = ({ title, subtitle, points = [], children, footer }) => (
             </ul>
           )}
         </div>
-        <p className="text-sm text-slate-500">Technology. Software. Skills for the Future.</p>
+        <p className="text-xs font-bold tracking-[0.14em] text-slate-500">{site.tagline}</p>
       </div>
     </div>
 
@@ -40,6 +41,9 @@ const AuthLayout = ({ title, subtitle, points = [], children, footer }) => (
         transition={{ duration: 0.5 }}
         className="w-full max-w-md"
       >
+        <Link to="/" aria-label="TopestTech home" className="mb-8 inline-block">
+          <Logo variant="full" className="w-28 sm:w-32" />
+        </Link>
         <h1 className="text-3xl font-extrabold tracking-tight text-ink">{title}</h1>
         {subtitle && <p className="mt-2 text-muted">{subtitle}</p>}
         <div className="mt-8">{children}</div>
