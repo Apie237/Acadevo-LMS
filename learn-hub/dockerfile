@@ -1,0 +1,21 @@
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+# 1. Copy package files
+COPY package*.json ./
+
+# 2. Force a real install and log it
+# We use --loglevel info to see if it's actually connecting to the registry
+RUN npm install --loglevel info
+
+# 3. Copy source
+COPY . .
+
+# 4. Check if vite exists, then build
+RUN ls -la node_modules/.bin/vite && npm run build
+
+# Stage 2: Serve
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
