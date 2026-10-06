@@ -11,32 +11,25 @@
 
 export const team = [
   {
-    id: "chefor-sylvanus",
-    name: "Chefor Sylvanus",
-    role: "Founder & Lead Instructor",
-    photo: null, // e.g. "/images/team/chefor-sylvanus.jpg"
-    shortBio:
-      "Leads TopestTech's software work and teaches in the Academy.",
+    id: "edison-an",
+    name: "Edison A.N",
+    role: "Founder & AI Tutor",
+    photo: "/images/team/edison-an.jpg",
+    shortBio: "Founder of TopestTech and AI tutor in TopestTech Academy.",
     bio:
-      "Chefor is the founder of TopestTech. He works across the company's software projects and teaches in TopestTech Academy, with a focus on practical, project-based learning.", // TODO: review / expand
-    expertise: [
-      "Software development",
-      "Web development",
-      "Technology education",
-      "Project mentorship",
-    ],
+      "Edison A.N is the founder of TopestTech. He leads the company and teaches in TopestTech Academy as its AI tutor, helping learners build practical technology skills.", // TODO: review / expand
+    expertise: ["Leadership", "Artificial intelligence", "Technology education"], // TODO: confirm
     socials: [],
   },
   {
-    id: "edison-an",
-    name: "Edison A.N",
-    role: "AI Tutor",
-    isAI: true, // shows an AI avatar instead of a photo
-    photo: null,
-    shortBio: "TopestTech Academy's AI tutor, supporting students as they learn.",
+    id: "chefor-sylvanus",
+    name: "Chefor Sylvanus",
+    role: "Tech Tutor",
+    photo: "/images/team/chefor-sylvanus.jpg",
+    shortBio: "Tech tutor in TopestTech Academy.",
     bio:
-      "Edison A.N is the AI tutor of TopestTech Academy. Edison supports students alongside our instructors — helping them work through questions, explaining concepts in different ways and guiding them as they practise.", // TODO: review / expand
-    expertise: ["Answering student questions", "Explaining concepts", "Practice support"],
+      "Chefor Sylvanus is a tech tutor in TopestTech Academy, helping students learn through practical, hands-on sessions.", // TODO: review / expand
+    expertise: ["Web development", "Software development", "Technology education"], // TODO: confirm
     socials: [],
   },
 ];
