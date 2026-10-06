@@ -66,9 +66,9 @@ describe("TopestTech public site", () => {
 
   it("team card opens the profile modal", () => {
     renderAt("/team", "/team", <Team />);
-    fireEvent.click(screen.getByRole("button", { name: /View profile of Chefor Sylvanus/ }));
+    fireEvent.click(screen.getByRole("button", { name: /View profile of Edison A.N/ }));
     const dialog = screen.getByRole("dialog");
-    expect(within(dialog).getByText("Founder & Lead Instructor")).toBeInTheDocument();
+    expect(within(dialog).getByText("Founder & AI Tutor")).toBeInTheDocument();
   });
 
   it("contact form preselects the inquiry type and validates input", () => {
