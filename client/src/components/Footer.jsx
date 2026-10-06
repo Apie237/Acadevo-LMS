@@ -38,7 +38,7 @@ const Footer = () => {
             <Link to="/" aria-label={`${site.name} home`}>
               <Logo tone="light" />
             </Link>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">{site.tagline}</p>
+            <p className="mt-5 max-w-xs text-xs font-bold leading-relaxed tracking-[0.14em] text-slate-300">{site.tagline}</p>
             {site.socials.length > 0 && (
               <div className="mt-6">
                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Social Media</p>

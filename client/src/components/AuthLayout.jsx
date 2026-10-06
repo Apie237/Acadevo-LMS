@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import Logo from "./Logo";
+import { site } from "../data/site";
 
 // Split layout for Login / Register: navy brand panel + form panel.
 const AuthLayout = ({ title, subtitle, points = [], children, footer }) => (
@@ -29,7 +30,7 @@ const AuthLayout = ({ title, subtitle, points = [], children, footer }) => (
             </ul>
           )}
         </div>
-        <p className="text-sm text-slate-500">Technology. Software. Skills for the Future.</p>
+        <p className="text-xs font-bold tracking-[0.14em] text-slate-500">{site.tagline}</p>
       </div>
     </div>
 

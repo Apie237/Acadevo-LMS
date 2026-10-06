@@ -58,9 +58,9 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.05, ease }}
             className="mt-6 text-[2.6rem] font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.1rem]"
           >
-            Technology. Software.{" "}
+            Top Code. Top Solutions.{" "}
             <span className="bg-gradient-to-r from-brand-400 to-brand-200 bg-clip-text text-transparent">
-              Skills for the Future.
+              Shape the World.
             </span>
           </motion.h1>
 

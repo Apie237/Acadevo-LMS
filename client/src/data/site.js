@@ -8,7 +8,7 @@
 export const site = {
   name: "TopestTech",
   wordmark: "TOPESTTECH",
-  tagline: "Technology. Software. Skills for the Future.",
+  tagline: "TOP CODE TOP SOLUTIONS SHAPE THE WORLD",
   description:
     "TopestTech builds digital solutions and provides practical technology education for aspiring developers and organizations.",
 

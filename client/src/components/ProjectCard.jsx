@@ -14,7 +14,7 @@ export const ProjectCover = ({ project, className = "", large = false }) => {
         alt={`${project.name} screenshot`}
         loading="lazy"
         onError={() => setFailed(true)}
-        className={`h-full w-full object-cover ${className}`}
+        className={`h-full w-full object-cover object-top ${className}`}
       />
     );
   }
