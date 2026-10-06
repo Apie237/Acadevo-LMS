@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// ToppestTech projects ("Works").
+// TopestTech projects ("Works").
 //
 // IMPORTANT: Only Acadevo Africa has details that could be verified from this
 // codebase. The other projects are listed by name with neutral descriptions.
@@ -12,7 +12,7 @@
 //                "Business", "Management Systems" (used by the filter bar)
 //   category     Primary label shown on the card
 //   summary      One or two sentences for the card
-//   image        Cover image path, e.g. "/images/projects/eduvest.jpg"
+//   image        Cover image path, e.g. "/images/projects/acadevo.jpg"
 //                (put the file in client/public/images/projects/). null = placeholder
 //   screenshots  Array of image paths for the detail page
 //   technologies Array of strings
@@ -32,23 +32,6 @@ export const projectCategories = [
 ];
 
 export const projects = [
-  {
-    id: "eduvest",
-    name: "EduVest",
-    category: "Education",
-    categories: ["Education", "Web Applications"], // TODO: confirm categories
-    summary: "A digital platform project built by the ToppestTech team.", // TODO: real summary
-    image: null,
-    screenshots: [],
-    technologies: [], // TODO
-    overview: "",
-    problem: "",
-    solution: "",
-    features: [],
-    liveUrl: "",
-    githubUrl: "",
-    featured: true,
-  },
   {
     id: "acadevo",
     name: "Acadevo Africa",
@@ -113,7 +96,7 @@ export const projects = [
     name: "Treasurit",
     category: "Web Applications",
     categories: ["Web Applications", "Business"], // TODO: confirm categories
-    summary: "A digital product built by the ToppestTech team.", // TODO: real summary
+    summary: "A digital product built by the TopestTech team.", // TODO: real summary
     image: null,
     screenshots: [],
     technologies: [],
@@ -123,7 +106,7 @@ export const projects = [
     features: [],
     liveUrl: "",
     githubUrl: "",
-    featured: false,
+    featured: true,
   },
   {
     id: "mirage-rent-car",

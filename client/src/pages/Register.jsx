@@ -119,7 +119,7 @@ const Register = () => {
       subtitle={
         success
           ? "Your account has been created successfully."
-          : "Create your ToppestTech account to join the Academy and hear first about new sessions and programs."
+          : "Create your TopestTech account to join the Academy and hear first about new sessions and programs."
       }
       points={["Practical, hands-on learning", "Real projects", "A growing community of learners"]}
       footer={
@@ -221,7 +221,7 @@ const Register = () => {
           </form>
 
           <p className="mt-6 text-center text-xs text-slate-400">
-            By signing up, you agree to ToppestTech's Terms of Service and Privacy Policy.
+            By signing up, you agree to TopestTech's Terms of Service and Privacy Policy.
           </p>
         </>
       )}

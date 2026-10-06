@@ -17,11 +17,11 @@ const CodeWindow = () => (
       <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
       <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
       <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
-      <span className="ml-3 text-[11px] font-medium text-slate-500">toppestech.js</span>
+      <span className="ml-3 text-[11px] font-medium text-slate-500">topesttech.js</span>
     </div>
     <pre className="mt-3 overflow-hidden font-mono text-[12px] leading-6 text-slate-300">
       <code>
-        <span className="text-brand-300">const</span> toppestech = {"{"}
+        <span className="text-brand-300">const</span> topesttech = {"{"}
         {"\n"}  build: [<span className="text-emerald-300">"websites"</span>, <span className="text-emerald-300">"apps"</span>],
         {"\n"}  teach: <span className="text-emerald-300">"practical skills"</span>,
         {"\n"}  grow: <span className="text-amber-300">true</span>,
@@ -70,7 +70,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.15, ease }}
             className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg"
           >
-            ToppestTech is a technology company and academy focused on building digital solutions and providing
+            TopestTech is a technology company and academy focused on building digital solutions and providing
             practical technology skills for aspiring developers and professionals.
           </motion.p>
 

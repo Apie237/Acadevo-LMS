@@ -8,6 +8,7 @@ const ImagePlaceholder = ({
   alt = "",
   label,
   initials,
+  icon: Icon,
   className = "",
   imgClassName = "",
   variant = "blue",
@@ -46,7 +47,9 @@ const ImagePlaceholder = ({
         }}
       />
       <div className="relative flex flex-col items-center gap-2 px-4 text-center">
-        {initials ? (
+        {Icon ? (
+          <Icon size={56} strokeWidth={1.4} className="opacity-90" />
+        ) : initials ? (
           <span className="text-4xl font-extrabold tracking-tight opacity-90">{initials}</span>
         ) : (
           <ImageIcon size={28} strokeWidth={1.5} className="opacity-70" />

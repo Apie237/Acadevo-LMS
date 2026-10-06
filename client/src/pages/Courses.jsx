@@ -70,7 +70,7 @@ const CoursesPage = () => {
       <PageHeader
         eyebrow="Learning Platform"
         title="Online Courses"
-        description="Courses available on the ToppestTech learning platform. Log in to access the courses you're enrolled in."
+        description="Courses available on the TopestTech learning platform. Log in to access the courses you're enrolled in."
       />
 
       <div className="container-page py-12">
@@ -138,7 +138,7 @@ const CoursesPage = () => {
                   ? "Please check your connection and try again later."
                   : courses.length
                   ? "Try adjusting your filters or search terms."
-                  : "Explore ToppestTech Academy programs in the meantime."}
+                  : "Explore TopestTech Academy programs in the meantime."}
               </p>
               {courses.length > 0 ? (
                 <button onClick={clearFilters} className="btn-primary mt-6">

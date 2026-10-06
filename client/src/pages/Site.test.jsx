@@ -25,7 +25,7 @@ const renderAt = (path, routePath, element) =>
     </MemoryRouter>
   );
 
-describe("ToppestTech public site", () => {
+describe("TopestTech public site", () => {
   it("home shows the hero, truthful stats and no Acadevo branding claims", () => {
     renderAt("/", "/", <Home />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Technology\. Software\./);
@@ -37,7 +37,7 @@ describe("ToppestTech public site", () => {
     renderAt("/works", "/works", <Works />);
     expect(screen.getAllByText("Acadevo Africa").length).toBeGreaterThan(0);
     fireEvent.click(screen.getByRole("tab", { name: /^Websites/ }));
-    await waitFor(() => expect(screen.queryByRole("heading", { name: "EduVest" })).toBeNull());
+    await waitFor(() => expect(screen.queryByRole("heading", { name: "Treasurit" })).toBeNull());
     expect(screen.getByRole("heading", { name: "World Wide Missions" })).toBeInTheDocument();
   });
 

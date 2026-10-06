@@ -53,7 +53,7 @@ const Login = () => {
   return (
     <AuthLayout
       title="Welcome back"
-      subtitle="Log in to your ToppestTech account to continue learning."
+      subtitle="Log in to your TopestTech account to continue learning."
       points={["Access your courses", "Continue where you left off", "Stay connected with the Academy"]}
       footer={
         <>
@@ -133,7 +133,7 @@ const Login = () => {
       </form>
 
       <p className="mt-6 text-center text-xs text-slate-400">
-        By continuing, you agree to ToppestTech's Terms of Service and Privacy Policy.
+        By continuing, you agree to TopestTech's Terms of Service and Privacy Policy.
       </p>
     </AuthLayout>
   );

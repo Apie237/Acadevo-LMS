@@ -28,7 +28,7 @@ export const reportMeta = {
   subtitle:
     "A look at how we prepared, what we taught, what we achieved, and what we are embarking on next.",
   cardSummary:
-    "How we prepared, what we taught during our first hands-on week of web development, and where ToppestTech Academy is heading next.",
+    "How we prepared, what we taught during our first hands-on week of web development, and where TopestTech Academy is heading next.",
   dateLabel: "", // e.g. "August 2026" – add the real dates of the session
   cover: null, // e.g. "/images/reports/cover.jpg"
 };
@@ -114,7 +114,7 @@ export const teaching = {
 // PART 3 — What we are embarking on (future direction, not achievements)
 export const embarking = {
   intro:
-    "Our first session was a starting point. Here is the direction ToppestTech Academy is working towards next.",
+    "Our first session was a starting point. Here is the direction TopestTech Academy is working towards next.",
   items: [
     { icon: Layers3, title: "Structured learning", text: "Moving from short tutorials toward structured programs with clear learning paths." },
     { icon: FolderGit2, title: "More practical projects", text: "Giving learners more opportunities to build real, complete projects." },
@@ -123,7 +123,7 @@ export const embarking = {
     { icon: HeartHandshake, title: "Mentorship & support", text: "Offering more guidance and support to students as they learn." },
     { icon: Users, title: "A stronger community", text: "Growing a community where learners help and motivate each other." },
     { icon: Briefcase, title: "Real-world readiness", text: "Preparing learners to take part in real-world technology projects." },
-    { icon: GraduationCap, title: "Future programs", text: "Launching structured programs through ToppestTech Academy." },
+    { icon: GraduationCap, title: "Future programs", text: "Launching structured programs through TopestTech Academy." },
   ],
 };
 

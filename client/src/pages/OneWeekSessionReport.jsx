@@ -83,7 +83,7 @@ const OneWeekSessionReport = () => {
             className="mx-auto mt-10 max-w-3xl text-center"
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-brand-200">
-              ToppestTech Academy · Report{reportMeta.dateLabel ? ` · ${reportMeta.dateLabel}` : ""}
+              TopestTech Academy · Report{reportMeta.dateLabel ? ` · ${reportMeta.dateLabel}` : ""}
             </span>
             <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
               1-Week Learning <span className="text-brand-400">Session Report</span>
@@ -224,7 +224,7 @@ const OneWeekSessionReport = () => {
         <Reveal className="mt-16 rounded-3xl border border-white/10 bg-gradient-to-br from-brand to-brand-700 p-8 text-center sm:p-12">
           <h3 className="text-2xl font-extrabold tracking-tight text-white sm:text-3xl">Be Part of the Next Cohort</h3>
           <p className="mx-auto mt-3 max-w-xl text-brand-50/90">
-            Join ToppestTech Academy and be among the first to hear when our next sessions and programs open.
+            Join TopestTech Academy and be among the first to hear when our next sessions and programs open.
           </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link to={site.joinAcademyPath} className="btn bg-white text-navy shadow-lift hover:-translate-y-0.5 hover:bg-brand-50">

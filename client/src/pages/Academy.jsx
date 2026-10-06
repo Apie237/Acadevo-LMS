@@ -37,10 +37,10 @@ const Academy = () => {
   return (
     <>
       <PageHeader
-        eyebrow="ToppestTech Academy"
+        eyebrow="TopestTech Academy"
         title="Learn. Build."
         highlight="Grow."
-        description="ToppestTech Academy helps aspiring developers build practical technology skills through hands-on learning, projects, mentorship, and community."
+        description="TopestTech Academy helps aspiring developers build practical technology skills through hands-on learning, projects, mentorship, and community."
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <Link to={site.joinAcademyPath} className="btn-primary">
@@ -176,7 +176,7 @@ const Academy = () => {
                 Already a student?
               </h2>
               <p className="mt-3 leading-relaxed text-muted">
-                Log in to your account to access your courses and continue learning on the ToppestTech learning
+                Log in to your account to access your courses and continue learning on the TopestTech learning
                 platform.
               </p>
             </div>

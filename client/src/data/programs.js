@@ -1,7 +1,7 @@
 import { Layers, LayoutTemplate, Server, Code2, PenTool, ShieldCheck } from "lucide-react";
 
 // ---------------------------------------------------------------------------
-// ToppestTech Academy programs.
+// TopestTech Academy programs.
 //
 // status: "available"   -> currently running / open for enrolment
 //         "coming-soon" -> planned, not yet running
