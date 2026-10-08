@@ -63,7 +63,7 @@ const IconGrid =({ items, tone = "light" }) => (
   </div>
 );
 
-const OneWeekSessionReport = () => {
+const SessionReport = () => {
   usePageTitle(reportMeta.title);
 
   return (
@@ -86,7 +86,7 @@ const OneWeekSessionReport = () => {
               TopestTech Academy · Report{reportMeta.dateLabel ? ` · ${reportMeta.dateLabel}` : ""}
             </span>
             <h1 className="mt-6 text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-              1-Week Learning <span className="text-brand-400">Session Report</span>
+              2-Week Learning <span className="text-brand-400">Session Report</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
               {reportMeta.subtitle}
@@ -151,9 +151,9 @@ const OneWeekSessionReport = () => {
 
         <div className="mt-16">
           <Reveal className="mb-8 max-w-2xl">
-            <h3 className="text-xl font-extrabold tracking-tight text-ink sm:text-2xl">The learning week</h3>
+            <h3 className="text-xl font-extrabold tracking-tight text-ink sm:text-2xl">The learning journey</h3>
             <p className="mt-2 text-sm text-muted">
-              How the week progressed, from first introductions to hands-on practice.
+              How the two weeks progressed, from first introductions to hands-on practice.
             </p>
           </Reveal>
           <ReportTimeline steps={teaching.timeline} />
@@ -166,7 +166,7 @@ const OneWeekSessionReport = () => {
           <SectionHeading
             eyebrow="Gallery"
             title="Moments From the Session"
-            description="A few snapshots from our first one-week learning session."
+            description="A few snapshots from our first two-week learning session."
           />
           <div className="mt-12 grid auto-rows-[160px] grid-cols-2 gap-3 sm:auto-rows-[200px] md:grid-cols-4 md:gap-4">
             {sessionPhotos.map((photo, i) => (
@@ -240,4 +240,4 @@ const OneWeekSessionReport = () => {
   );
 };
 
-export default OneWeekSessionReport;
+export default SessionReport;

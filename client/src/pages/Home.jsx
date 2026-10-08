@@ -106,7 +106,7 @@ const Home = () => {
               tone="light"
               eyebrow="TopestTech Academy"
               title="Learn. Build. Grow."
-              description="Practical technology education for aspiring developers. We are starting small and building carefully — our first one-week, hands-on learning session is complete, and more structured programs are on the way."
+              description="Practical technology education for aspiring developers. We are starting small and building carefully — our first two-week, hands-on learning session is complete, and more structured programs are on the way."
             />
             <Reveal delay={0.1}>
               <ul className="mt-8 space-y-3">
@@ -143,7 +143,7 @@ const Home = () => {
         <div className="container-page">
           <Reveal>
             <Link
-              to="/reports/one-week-session"
+              to="/reports/two-week-session"
               className="group grid overflow-hidden rounded-4xl border border-line bg-gradient-to-br from-brand-50 via-white to-white shadow-soft transition hover:shadow-lift md:grid-cols-[1.3fr_1fr]"
             >
               <div className="p-8 sm:p-12">

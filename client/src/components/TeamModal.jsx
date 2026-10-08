@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X, Bot } from "lucide-react";
-import ImagePlaceholder from "./ImagePlaceholder";
+import { X } from "lucide-react";
+import MemberAvatar from "./MemberAvatar";
 import SocialLinks from "./SocialLinks";
-import { getInitials } from "../utils/text";
 
 const TeamModal = ({ member, onClose }) => {
   useEffect(() => {
@@ -47,13 +46,7 @@ const TeamModal = ({ member, onClose }) => {
             </button>
             <div className="grid md:grid-cols-[280px_1fr]">
               <div className="aspect-square md:aspect-auto md:min-h-full">
-                <ImagePlaceholder
-                  src={member.photo}
-                  alt={member.name}
-                  initials={getInitials(member.name)}
-                  icon={member.isAI ? Bot : undefined}
-                  variant="navy"
-                />
+                <MemberAvatar member={member} />
               </div>
               <div className="p-7 sm:p-9">
                 <p className="eyebrow">{member.role}</p>

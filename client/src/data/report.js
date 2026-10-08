@@ -18,17 +18,17 @@ import {
 } from "lucide-react";
 
 // ---------------------------------------------------------------------------
-// 1-Week Learning Session report content.
-// Everything on /reports/one-week-session is driven from this file.
+// 2-Week Learning Session report content.
+// Everything on /reports/two-week-session is driven from this file.
 // ---------------------------------------------------------------------------
 
 export const reportMeta = {
-  id: "one-week-session",
-  title: "1-Week Learning Session Report",
+  id: "two-week-session",
+  title: "2-Week Learning Session Report",
   subtitle:
     "A look at how we prepared, what we taught, what we achieved, and what we are embarking on next.",
   cardSummary:
-    "How we prepared, what we taught during our first hands-on week of web development, and where TopestTech Academy is heading next.",
+    "How we prepared, what we taught during our first two hands-on weeks of web development, and where TopestTech Academy is heading next.",
   dateLabel: "", // e.g. "August 2026" – add the real dates of the session
   cover: null, // e.g. "/images/reports/cover.jpg"
 };
@@ -36,7 +36,7 @@ export const reportMeta = {
 // Session highlights – truthful numbers only.
 export const sessionHighlights = [
   { value: "32", label: "Students" },
-  { value: "5", label: "Days" },
+  { value: "2", label: "Weeks" },
   { value: "1", label: "Learning Session" },
   { value: "Practical", label: "Learning" },
   { value: "Hands-on", label: "Projects" },
@@ -45,10 +45,10 @@ export const sessionHighlights = [
 // PART 1 — Preparation
 export const preparation = {
   intro:
-    "Before the first class, we set out to make the week focused, practical and easy to follow — so that students would spend their time building, not waiting.",
+    "Before the first class, we set out to make the two weeks focused, practical and easy to follow — so that students would spend their time building, not waiting.",
   items: [
-    { icon: Target, title: "Defined goals & structure", text: "Set clear goals for the week and organised the topics into a logical, step-by-step flow." },
-    { icon: FileText, title: "Prepared learning materials", text: "Put together notes and examples to support each topic covered during the week." },
+    { icon: Target, title: "Defined goals & structure", text: "Set clear goals for the two weeks and organised the topics into a logical, step-by-step flow." },
+    { icon: FileText, title: "Prepared learning materials", text: "Put together notes and examples to support each topic covered during the two weeks." },
     { icon: Dumbbell, title: "Prepared practical exercises", text: "Designed exercises so every concept could be practised immediately after it was introduced." },
     { icon: MonitorCog, title: "Organised the learning platform", text: "Set up where materials, instructions and resources would be shared with students." },
     { icon: UserPlus, title: "Mobilised & registered students", text: "Reached out to interested learners and registered participants for the session." },
@@ -61,7 +61,7 @@ export const preparation = {
 // PART 2 — Teaching
 export const teaching = {
   intro:
-    "The week introduced students to web development and moved quickly from ideas to practice. Rather than focusing only on theory, each topic was paired with hands-on exercises so students could see their code come to life.",
+    "The two weeks introduced students to web development and moved quickly from ideas to practice. Rather than focusing only on theory, each topic was paired with hands-on exercises so students could see their code come to life.",
   topics: [
     "Introduction to web development",
     "HTML fundamentals",
@@ -74,14 +74,14 @@ export const teaching = {
     "Practical exercises",
     "Hands-on projects",
   ],
-  // The learning journey through the week. `label` is shown on the timeline.
+  // The learning journey through the two weeks. `label` is shown on the timeline.
   // If you want to show exact days, set label to "Day 1", "Day 2", etc.
   // once the day-by-day schedule has been confirmed.
   timeline: [
     {
       label: "Stage 1",
       title: "Orientation & Introduction",
-      text: "Getting to know the group, the goals of the week and how the web works.",
+      text: "Getting to know the group, the goals of the two weeks and how the web works.",
     },
     {
       label: "Stage 2",
@@ -143,7 +143,7 @@ export const sessionPhotos = [
 export const reports = [
   {
     ...reportMeta,
-    path: "/reports/one-week-session",
+    path: "/reports/two-week-session",
     tag: "Academy",
   },
 ];

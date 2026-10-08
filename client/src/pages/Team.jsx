@@ -57,7 +57,7 @@ const Team = () => {
             <SectionHeading
               align="left"
               eyebrow="Partner Tutors"
-              title="Our partner tutors"
+              title="Our Partner Tutors"
               description="Tutors who partner with TopestTech Academy to teach and mentor our students."
             />
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

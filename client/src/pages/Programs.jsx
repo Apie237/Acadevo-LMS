@@ -46,7 +46,7 @@ const Programs = () => {
             {availableCount === 0 && (
               <p className="flex items-start gap-2 text-sm text-muted md:max-w-md">
                 <Info size={16} className="mt-0.5 shrink-0 text-brand" />
-                No program is open for enrolment right now. Our first one-week session has finished and the next programs
+                No program is open for enrolment right now. Our first two-week session has finished and the next programs
                 are being prepared.
               </p>
             )}
@@ -76,7 +76,7 @@ const Programs = () => {
         title="Be part of the next cohort"
         description="Register your interest and we'll let you know when programs open."
         primary={{ label: "Join the Academy", to: site.joinAcademyPath }}
-        secondary={{ label: "Read the Session Report", to: "/reports/one-week-session" }}
+        secondary={{ label: "Read the Session Report", to: "/reports/two-week-session" }}
       />
     </>
   );
