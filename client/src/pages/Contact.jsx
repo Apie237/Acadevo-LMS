@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Mail, MessageCircle, MapPin, Send, AlertCircle, CheckCircle2, Share2 } from "lucide-react";
+import { Mail, Phone, MessageCircle, MapPin, Send, AlertCircle, CheckCircle2, Share2 } from "lucide-react";
 import PageHeader from "../components/PageHeader";
 import SocialLinks from "../components/SocialLinks";
 import Reveal from "../components/Reveal";
@@ -38,7 +38,7 @@ const Contact = () => {
   const [error, setError] = useState("");
   const [status, setStatus] = useState(null); // null | "sent" | "unconfigured"
 
-  const { email, whatsappDisplay, location } = site.contact;
+  const { email, phone, whatsappDisplay, location } = site.contact;
   const wa = whatsappLink();
 
   const update = (field) => (e) => {
@@ -82,9 +82,15 @@ const Contact = () => {
       href: email ? `mailto:${email}` : "",
     },
     {
+      icon: Phone,
+      label: "Phone",
+      value: whatsappDisplay || phone,
+      href: phone ? `tel:${phone}` : "",
+    },
+    {
       icon: MessageCircle,
       label: "WhatsApp",
-      value: whatsappDisplay || (wa ? "Chat with us" : ""),
+      value: wa ? "Chat on WhatsApp" : "",
       href: wa,
     },
     { icon: MapPin, label: "Location", value: location, href: "" },

@@ -49,7 +49,7 @@ const Hero = () => {
             className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-semibold text-brand-200"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-brand-400" />
-            Technology Company &amp; Academy · Cameroon
+            Technology Company with an Academy · Cameroon
           </motion.span>
 
           <motion.h1
@@ -70,8 +70,8 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.15, ease }}
             className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg"
           >
-            TopestTech is a technology company and academy focused on building digital solutions and providing
-            practical technology skills for aspiring developers and professionals.
+            TopestTech is a technology company with an academy focused on building digital solutions and practical
+            technology skills.
           </motion.p>
 
           <motion.div
@@ -142,7 +142,7 @@ const Hero = () => {
               </span>
               <div>
                 <p className="text-sm font-bold">First learning session</p>
-                <p className="text-xs text-muted">Completed · 15+ students</p>
+                <p className="text-xs text-muted">Completed · 32 students</p>
               </div>
             </div>
           </motion.div>

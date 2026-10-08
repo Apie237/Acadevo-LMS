@@ -82,7 +82,7 @@ const Academy = () => {
               align="left"
               eyebrow="Where We Are"
               title="Our first learning session is complete"
-              description="Around 15 students joined our first one-week, hands-on session, covering the foundations of web development — HTML, CSS, landing pages and an introduction to JavaScript."
+              description="32 students joined our first one-week, hands-on session, covering the foundations of web development — HTML, CSS, landing pages and an introduction to JavaScript."
             />
             <Reveal delay={0.1}>
               <p className="mt-4 leading-relaxed text-muted">
@@ -102,7 +102,7 @@ const Academy = () => {
                 <h3 className="mt-3 text-2xl font-extrabold">{reportMeta.title}</h3>
                 <div className="mt-8 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
                   {[
-                    ["15+", "Students"],
+                    ["32", "Students"],
                     ["5", "Days"],
                     ["1", "Session"],
                   ].map(([v, l]) => (

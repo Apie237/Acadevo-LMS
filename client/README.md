@@ -1,6 +1,6 @@
 # TopestTech — Public Website (client)
 
-The public website for **TopestTech**, a technology company and technology academy in Cameroon.
+The public website for **TopestTech**, a technology company with an academy in Cameroon.
 Built with React, Vite, Tailwind CSS, React Router, Framer Motion, Lucide React and Axios.
 
 ```bash

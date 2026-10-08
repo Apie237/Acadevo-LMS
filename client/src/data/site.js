@@ -20,9 +20,10 @@ export const site = {
   learnHubUrl: import.meta.env.VITE_LEARNHUB_URL || "https://learnhubacadevo.vercel.app",
 
   contact: {
-    email: "", // e.g. "hello@topesttech.com"
-    whatsapp: "", // international format without "+" or spaces, e.g. "2376XXXXXXXX"
-    whatsappDisplay: "", // e.g. "+237 6XX XXX XXX"
+    email: "topesttechcse@gmail.com",
+    whatsapp: "237640897191", // international format without "+" or spaces
+    whatsappDisplay: "+237 640 897 191",
+    phone: "+237640897191",
     location: "Cameroon",
   },
 
@@ -44,14 +45,14 @@ export const navLinks = [
 
 // Homepage statistics strip – keep these truthful and update as TopestTech grows.
 export const homeStats = [
-  { value: "15+", label: "Students" },
+  { value: "32", label: "Students" },
   { value: "1", label: "Learning Session" },
   { value: "5+", label: "Projects" },
   { value: "1", label: "Growing Community" },
 ];
 
 export const academyStats = [
-  { value: "15+", label: "Students" },
+  { value: "32", label: "Students" },
   { value: "1+", label: "Learning Sessions" },
   { value: "Practical", label: "Hands-on Learning" },
   { value: "Real", label: "Projects" },
