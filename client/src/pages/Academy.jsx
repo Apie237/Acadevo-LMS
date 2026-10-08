@@ -82,14 +82,14 @@ const Academy = () => {
               align="left"
               eyebrow="Where We Are"
               title="Our first learning session is complete"
-              description="32 students joined our first one-week, hands-on session, covering the foundations of web development — HTML, CSS, landing pages and an introduction to JavaScript."
+              description="32 students joined our first two-week, hands-on session, covering the foundations of web development — HTML, CSS, landing pages and an introduction to JavaScript."
             />
             <Reveal delay={0.1}>
               <p className="mt-4 leading-relaxed text-muted">
                 We are now preparing deeper and more structured training programs. Read the full report to see how we
                 prepared, what we taught and where we're heading next.
               </p>
-              <Link to="/reports/one-week-session" className="btn-primary mt-8">
+              <Link to="/reports/two-week-session" className="btn-primary mt-8">
                 <FileText size={16} /> Read the Session Report
               </Link>
             </Reveal>
@@ -103,7 +103,7 @@ const Academy = () => {
                 <div className="mt-8 grid grid-cols-3 gap-4 border-t border-white/10 pt-6">
                   {[
                     ["32", "Students"],
-                    ["5", "Days"],
+                    ["2", "Weeks"],
                     ["1", "Session"],
                   ].map(([v, l]) => (
                     <div key={l}>

@@ -14,7 +14,7 @@ const Academy = lazy(() => import("./pages/Academy.jsx"));
 const Programs = lazy(() => import("./pages/Programs.jsx"));
 const ProgramDetail = lazy(() => import("./pages/ProgramDetail.jsx"));
 const Reports = lazy(() => import("./pages/Reports.jsx"));
-const OneWeekSessionReport = lazy(() => import("./pages/OneWeekSessionReport.jsx"));
+const SessionReport = lazy(() => import("./pages/SessionReport.jsx"));
 const Team = lazy(() => import("./pages/Team.jsx"));
 const Services = lazy(() => import("./pages/Services.jsx"));
 const Contact = lazy(() => import("./pages/Contact.jsx"));
@@ -42,7 +42,8 @@ const App = () => (
           <Route path="/academy/programs" element={<Programs />} />
           <Route path="/academy/programs/:id" element={<ProgramDetail />} />
           <Route path="/reports" element={<Reports />} />
-          <Route path="/reports/one-week-session" element={<OneWeekSessionReport />} />
+          <Route path="/reports/two-week-session" element={<SessionReport />} />
+          <Route path="/reports/one-week-session" element={<Navigate to="/reports/two-week-session" replace />} />
           <Route path="/team" element={<Team />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />

@@ -1,7 +1,6 @@
 import React from "react";
-import { ArrowUpRight, Bot } from "lucide-react";
-import ImagePlaceholder from "./ImagePlaceholder";
-import { getInitials } from "../utils/text";
+import { ArrowUpRight } from "lucide-react";
+import MemberAvatar from "./MemberAvatar";
 
 const TeamCard = ({ member, onOpen }) => (
   <button
@@ -12,13 +11,7 @@ const TeamCard = ({ member, onOpen }) => (
   >
     <div className="aspect-[4/4] overflow-hidden">
       <div className="h-full w-full transition duration-500 group-hover:scale-[1.03]">
-        <ImagePlaceholder
-          src={member.photo}
-          alt={member.name}
-          initials={getInitials(member.name)}
-          icon={member.isAI ? Bot : undefined}
-          variant="navy"
-        />
+        <MemberAvatar member={member} />
       </div>
     </div>
     <div className="flex flex-1 flex-col p-6">

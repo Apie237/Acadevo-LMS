@@ -8,7 +8,7 @@
 // {
 //   id: 1,
 //   name: "Student Name",
-//   role: "Participant, 1-Week Learning Session",
+//   role: "Participant, 2-Week Learning Session",
 //   message: "What the student actually said…",
 //   photo: null, // or "/images/academy/student-name.jpg"
 // }

@@ -10,7 +10,7 @@ import Works from "./Works";
 import ProjectDetail from "./ProjectDetail";
 import Academy from "./Academy";
 import ProgramDetail from "./ProgramDetail";
-import OneWeekSessionReport from "./OneWeekSessionReport";
+import SessionReport from "./SessionReport";
 import Team from "./Team";
 import Contact from "./Contact";
 
@@ -58,7 +58,7 @@ describe("TopestTech public site", () => {
   });
 
   it("session report has exactly the three parts", () => {
-    renderAt("/reports/one-week-session", "/reports/one-week-session", <OneWeekSessionReport />);
+    renderAt("/reports/two-week-session", "/reports/two-week-session", <SessionReport />);
     const parts = screen.getAllByText(/^Part \d$/);
     expect(parts.map((p) => p.textContent)).toEqual(["Part 1", "Part 2", "Part 3"]);
     expect(screen.getByRole("heading", { name: "What We Are Embarking On" })).toBeInTheDocument();
