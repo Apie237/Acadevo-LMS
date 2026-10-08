@@ -4,6 +4,9 @@ import { ArrowRight, FileText } from "lucide-react";
 import PageHeader from "../components/PageHeader";
 import CTASection from "../components/CTASection";
 import Reveal from "../components/Reveal";
+import SectionHeading from "../components/SectionHeading";
+import TestimonialCard, { TestimonialEmpty } from "../components/TestimonialCard";
+import { testimonials } from "../data/testimonials";
 import usePageTitle from "../hooks/usePageTitle";
 import { reports } from "../data/report";
 import { site } from "../data/site";
@@ -55,6 +58,31 @@ const Reports = () => {
                 </p>
               </div>
             </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className="section bg-slate-50">
+        <div className="container-page">
+          <SectionHeading
+            eyebrow="Student Feedback"
+            title="What our students say"
+            description="Feedback from students who took part in our learning sessions."
+          />
+          <div className="mt-12">
+            {testimonials.length ? (
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {testimonials.map((t, i) => (
+                  <Reveal key={t.id} delay={i * 0.06} className="h-full">
+                    <TestimonialCard {...t} />
+                  </Reveal>
+                ))}
+              </div>
+            ) : (
+              <Reveal>
+                <TestimonialEmpty />
+              </Reveal>
+            )}
           </div>
         </div>
       </section>

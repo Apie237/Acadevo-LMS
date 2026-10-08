@@ -60,6 +60,9 @@ const TeamModal = ({ member, onClose }) => {
                 <h3 id="team-modal-title" className="mt-2 text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">
                   {member.name}
                 </h3>
+                {member.credentials && (
+                  <p className="mt-1 text-sm font-semibold text-slate-500">{member.credentials}</p>
+                )}
                 <p className="mt-4 leading-relaxed text-slate-600">{member.bio}</p>
                 {member.expertise?.length > 0 && (
                   <div className="mt-6">

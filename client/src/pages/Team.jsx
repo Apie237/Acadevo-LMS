@@ -7,7 +7,8 @@ import TeamModal from "../components/TeamModal";
 import CTASection from "../components/CTASection";
 import Reveal from "../components/Reveal";
 import usePageTitle from "../hooks/usePageTitle";
-import { team } from "../data/team";
+import SectionHeading from "../components/SectionHeading";
+import { team, partnerTutors } from "../data/team";
 
 const Team = () => {
   usePageTitle("Team");
@@ -49,6 +50,26 @@ const Team = () => {
           </div>
         </div>
       </section>
+
+      {partnerTutors.length > 0 && (
+        <section className="section bg-slate-50">
+          <div className="container-page">
+            <SectionHeading
+              align="left"
+              eyebrow="Partner Tutors"
+              title="Our partner tutors"
+              description="Tutors who partner with TopestTech Academy to teach and mentor our students."
+            />
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {partnerTutors.map((m, i) => (
+                <Reveal key={m.id} delay={i * 0.06} className="h-full">
+                  <TeamCard member={m} onOpen={setSelected} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <TeamModal member={selected} onClose={close} />
 

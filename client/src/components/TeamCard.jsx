@@ -31,6 +31,7 @@ const TeamCard = ({ member, onOpen }) => (
         )}
       </div>
       <p className="mt-0.5 text-sm font-semibold text-brand">{member.role}</p>
+      {member.credentials && <p className="mt-1 text-xs font-semibold text-slate-500">{member.credentials}</p>}
       <p className="mt-3 text-sm leading-relaxed text-muted">{member.shortBio}</p>
       {member.expertise?.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-1.5">

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, MessageCircle, MapPin } from "lucide-react";
+import { Mail, Phone, MessageCircle, MapPin } from "lucide-react";
 import Logo from "./Logo";
 import SocialLinks from "./SocialLinks";
 import { site, whatsappLink } from "../data/site";
@@ -27,7 +27,7 @@ const columns = [
 ];
 
 const Footer = () => {
-  const { email, whatsappDisplay, location } = site.contact;
+  const { email, phone, whatsappDisplay, location } = site.contact;
   const wa = whatsappLink();
 
   return (
@@ -36,7 +36,7 @@ const Footer = () => {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <Link to="/" aria-label={`${site.name} home`}>
-              <Logo tone="light" />
+              <Logo tone="light" size="md" />
             </Link>
             <p className="mt-5 max-w-xs text-xs font-bold leading-relaxed tracking-[0.14em] text-slate-300">{site.tagline}</p>
             {site.socials.length > 0 && (
@@ -70,11 +70,19 @@ const Footer = () => {
                   Contact Us
                 </Link>
               </li>
+              {phone && (
+                <li className="flex items-center gap-2.5">
+                  <Phone size={15} className="shrink-0 text-brand-400" />
+                  <a href={`tel:${phone}`} className="text-slate-400 hover:text-white">
+                    {whatsappDisplay || phone}
+                  </a>
+                </li>
+              )}
               <li className="flex items-center gap-2.5">
                 <MessageCircle size={15} className="shrink-0 text-brand-400" />
                 {wa ? (
                   <a href={wa} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white">
-                    {whatsappDisplay || "WhatsApp"}
+                    Chat on WhatsApp
                   </a>
                 ) : (
                   <span className="text-slate-500">WhatsApp — coming soon</span>
@@ -101,7 +109,7 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-slate-500 sm:flex-row">
           <p>© 2026 {site.name}. All rights reserved.</p>
-          <p>Technology company &amp; academy · {location}</p>
+          <p>Technology company with an academy · {location}</p>
         </div>
       </div>
     </footer>

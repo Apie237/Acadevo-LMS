@@ -29,7 +29,7 @@ describe("TopestTech public site", () => {
   it("home shows the hero, truthful stats and no Acadevo branding claims", () => {
     renderAt("/", "/", <Home />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Top Code\. Top Solutions\. Shape the World\./);
-    expect(screen.getByText("15+")).toBeInTheDocument();
+    expect(screen.getAllByText("32").length).toBeGreaterThan(0);
     expect(screen.queryByText(/200\+|10,000\+|1\.2B/)).toBeNull();
   });
 
@@ -66,7 +66,7 @@ describe("TopestTech public site", () => {
 
   it("team card opens the profile modal", () => {
     renderAt("/team", "/team", <Team />);
-    fireEvent.click(screen.getByRole("button", { name: /View profile of Edison A.N/ }));
+    fireEvent.click(screen.getByRole("button", { name: /View profile of Edison N.A/ }));
     const dialog = screen.getByRole("dialog");
     expect(within(dialog).getByText("Founder & AI Tutor")).toBeInTheDocument();
   });

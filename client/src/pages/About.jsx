@@ -39,7 +39,7 @@ const About = () => {
         eyebrow="About TopestTech"
         title="Building technology."
         highlight="Developing talent."
-        description="TopestTech is a technology company and academy focused on creating digital solutions and developing practical technology talent."
+        description="TopestTech is a technology company with an academy focused on creating digital solutions and developing practical technology talent."
       />
 
       {/* Who we are */}
@@ -56,7 +56,7 @@ const About = () => {
               <p className="mt-4 leading-relaxed text-muted">
                 The two sides strengthen each other: real project experience shapes what we teach, and the Academy
                 helps grow the technology talent we believe Africa needs. We are an emerging company — we have
-                completed our first hands-on learning session with around 15 students and we are building from there,
+                completed our first hands-on learning session with 32 students and we are building from there,
                 step by step.
               </p>
             </Reveal>
@@ -122,7 +122,7 @@ const About = () => {
             {
               icon: Eye,
               title: "Our Vision",
-              text: "To become a growing technology company and academy creating opportunities for technology talent and digital innovation in Africa.",
+              text: "To become a growing technology company with an academy creating opportunities for technology talent and digital innovation in Africa.",
             },
           ].map((m, i) => (
             <Reveal key={m.title} delay={i * 0.1} className="h-full">

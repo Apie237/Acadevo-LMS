@@ -13,7 +13,7 @@ const AuthLayout = ({ title, subtitle, points = [], children, footer }) => (
       <div className="absolute -bottom-24 -left-24 h-[380px] w-[380px] rounded-full bg-brand/30 blur-[120px]" />
       <div className="relative flex w-full flex-col justify-between p-12 xl:p-16">
         <Link to="/" aria-label="TopestTech home">
-          <Logo tone="light" />
+          <Logo tone="light" size="md" />
         </Link>
         <div>
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-brand-300">TopestTech Academy</p>
@@ -42,7 +42,7 @@ const AuthLayout = ({ title, subtitle, points = [], children, footer }) => (
         className="w-full max-w-md"
       >
         <Link to="/" aria-label="TopestTech home" className="mb-8 inline-block">
-          <Logo variant="full" className="w-28 sm:w-32" />
+          <Logo size="lg" />
         </Link>
         <h1 className="text-3xl font-extrabold tracking-tight text-ink">{title}</h1>
         {subtitle && <p className="mt-2 text-muted">{subtitle}</p>}

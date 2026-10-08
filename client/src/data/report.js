@@ -35,7 +35,7 @@ export const reportMeta = {
 
 // Session highlights – truthful numbers only.
 export const sessionHighlights = [
-  { value: "15+", label: "Students" },
+  { value: "32", label: "Students" },
   { value: "5", label: "Days" },
   { value: "1", label: "Learning Session" },
   { value: "Practical", label: "Learning" },
