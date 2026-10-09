@@ -36,22 +36,24 @@ export const team = [
   {
     id: "chefor-sylvan",
     name: "Chefor Sylvan",
+    credentials: "ALX Expert",
     role: "Tech Tutor",
     photo: "/images/team/chefor-sylvan.jpg",
-    shortBio: "Tech Tutor in TopestTech Academy.",
+    shortBio: "Tech Tutor in TopestTech Academy and ALX Expert.",
     bio:
-      "Chefor Sylvan is a Tech Tutor in TopestTech Academy, helping students learn through practical, hands-on sessions.", // TODO: review / expand
+      "Chefor Sylvan is an ALX Expert and a Tech Tutor in TopestTech Academy, helping students learn through practical, hands-on sessions.", // TODO: review / expand
     expertise: ["Web development", "Software development", "Technology education"], // TODO: confirm
     socials: [],
   },
   {
     id: "harrison-mbiseh",
     name: "Harrison Mbiseh",
+    credentials: "EduVest Founder · Treasurit Founder · Award-winning Expert",
     role: "Tech Coach",
-    photo: null, // add "/images/team/harrison-mbiseh.jpg" when available
-    shortBio: "Tech Coach in TopestTech Academy.",
+    photo: "/images/team/harrison-mbiseh.jpg",
+    shortBio: "Tech Coach in TopestTech Academy, founder of EduVest and Treasurit, and an award-winning expert.",
     bio:
-      "Harrison Mbiseh is a Tech Coach in TopestTech Academy, supporting and guiding students as they build their technology skills.", // TODO: review / expand
+      "Harrison Mbiseh is the founder of EduVest and Treasurit and an award-winning expert. As a Tech Coach in TopestTech Academy, he supports and guides students as they build their technology skills.", // TODO: review / expand
     expertise: ["Coaching", "Technology education", "Student support"], // TODO: confirm
     socials: [],
   },
