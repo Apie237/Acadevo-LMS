@@ -67,6 +67,23 @@ export const projects = [
     featured: true,
   },
   {
+    id: "eduvest",
+    name: "EduVest",
+    category: "Education",
+    categories: ["Education"],
+    summary: "EduVest is a school dashboard platform, live at edu-vest.com.", // TODO: expand with real details
+    image: null, // add a screenshot, e.g. "/images/projects/eduvest.jpg"
+    screenshots: [],
+    technologies: [], // TODO
+    overview: "",
+    problem: "",
+    solution: "",
+    features: [],
+    liveUrl: "https://edu-vest.com",
+    githubUrl: "",
+    featured: true,
+  },
+  {
     id: "flower-oasis",
     name: "Flower Oasis",
     category: "E-Commerce",
